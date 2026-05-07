@@ -1,0 +1,12 @@
+{
+  "name": "alisonsacupuncture-child-theme",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "sass": "^1.78.0"
+  },
+  "scripts": {
+    "build:css": "sass wp-content/themes/alisonsacupuncture/assets/scss/custom.scss wp-content/themes/alisonsacupuncture/assets/css/custom.css --no-source-map",
+    "watch:css": "sass --watch wp-content/themes/alisonsacupuncture/assets/scss/custom.scss:wp-content/themes/alisonsacupuncture/assets/css/custom.css --no-source-map"
+  }
+}

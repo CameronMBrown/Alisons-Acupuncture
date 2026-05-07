@@ -1,0 +1,15 @@
+@use "variables";
+@use "base";
+
+/* Import section styles */
+@use "hero";
+@use "navigation";
+@use "hours";
+@use "about";
+@use "testimonials";
+@use "services";
+@use "contact";
+@use "responsive";
+
+/* component styles can be added here if needed */
+@use "components/buttons";

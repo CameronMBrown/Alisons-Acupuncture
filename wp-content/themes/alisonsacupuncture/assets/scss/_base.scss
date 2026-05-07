@@ -1,0 +1,22 @@
+@use "variables";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: variables.$body-font;
+  color: variables.$text-color;
+  line-height: 1.6;
+  padding-top: 80px;
+}
+
+.cntr {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}

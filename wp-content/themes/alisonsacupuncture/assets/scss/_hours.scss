@@ -1,0 +1,47 @@
+@use "variables";
+
+.hours-section {
+  background-color: variables.$light-bg;
+  padding: 4rem 0;
+}
+
+.hours-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: variables.$primary-color;
+}
+
+.hours-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.hours-day {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.hours-day strong {
+  display: block;
+  color: variables.$primary-color;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.hours-day p {
+  color: variables.$secondary-color;
+  margin: 0;
+}
+
+.hours-note {
+  text-align: center;
+  color: #666;
+  font-size: 0.95rem;
+  font-style: italic;
+}
