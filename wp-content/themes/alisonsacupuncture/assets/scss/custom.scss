@@ -1,15 +1,17 @@
-@use "variables";
 @use "base";
+@use "responsive";
+@use "variables";
+@use "dev";
 
 /* Import section styles */
-@use "hero";
-@use "navigation";
-@use "hours";
-@use "about";
-@use "testimonials";
-@use "services";
-@use "contact";
-@use "responsive";
+@use "sections/hero";
+
+@use "sections/hours";
+@use "sections/about";
+@use "sections/testimonials";
+@use "sections/services";
+@use "sections/contact";
 
 /* component styles can be added here if needed */
 @use "components/buttons";
+@use "components/navigation";
