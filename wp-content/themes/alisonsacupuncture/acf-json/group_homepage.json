@@ -3,11 +3,11 @@
     "title": "Homepage Settings",
     "fields": [
         {
-            "key": "field_69fcedb2d15b9",
-            "label": "Header Primary Text",
-            "name": "header_primary_text",
+            "key": "field_69fe42a4cecc9",
+            "label": "Business Info",
+            "name": "",
             "aria-label": "",
-            "type": "text",
+            "type": "accordion",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,19 +16,16 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
         },
         {
-            "key": "field_header_tagline",
-            "label": "Header Tagline",
-            "name": "header_tagline",
+            "key": "field_business_address",
+            "label": "Business Address",
+            "name": "business_address",
             "aria-label": "",
-            "type": "text",
+            "type": "textarea",
             "instructions": "",
             "required": false,
             "conditional_logic": false,
@@ -37,11 +34,11 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Healing Through Traditional Chinese Medicine",
-            "placeholder": "Enter a short introduction or tagline",
-            "maxlength": "",
-            "prepend": "",
-            "append": ""
+            "default_value": "Grandhall 304 Division Street\nCobourg, ON",
+            "placeholder": "Enter full address",
+            "rows": 3,
+            "new_lines": "",
+            "maxlength": ""
         },
         {
             "key": "field_business_phone",
@@ -64,24 +61,123 @@
             "append": ""
         },
         {
-            "key": "field_business_address",
-            "label": "Business Address",
-            "name": "business_address",
+            "key": "field_69fe4293cecc8",
+            "label": "Hero Section",
+            "name": "",
             "aria-label": "",
-            "type": "textarea",
+            "type": "accordion",
             "instructions": "",
-            "required": false,
-            "conditional_logic": false,
+            "required": 0,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "default_value": "Grandhall 304 Division Street\nCobourg, ON",
-            "placeholder": "Enter full address",
-            "rows": 3,
-            "new_lines": "",
-            "maxlength": ""
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_69fe1ff6ef57b",
+            "label": "Header Text",
+            "name": "header_text",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_69fe2024727c8",
+                    "label": "Header Greeting",
+                    "name": "header_greeting",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69fcedb2d15b9",
+                    "label": "Header Primary Text",
+                    "name": "header_primary_text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69fe2036727c9",
+                    "label": "Certification Text",
+                    "name": "certification_text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_header_tagline",
+                    "label": "Header Tagline",
+                    "name": "header_tagline",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Healing Through Traditional Chinese Medicine",
+                    "placeholder": "Enter a short introduction or tagline",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ]
         },
         {
             "key": "field_hero_avatar_image",
@@ -152,6 +248,50 @@
             "max_height": 0,
             "max_size": 0,
             "mime_types": ""
+        },
+        {
+            "key": "field_69fe4311ceccb",
+            "label": "Business Hours Section",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_69fe67c877533",
+            "label": "Hours Background Image",
+            "name": "hours_background_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
         },
         {
             "key": "field_hours_title",
@@ -355,5 +495,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1778183632
+    "modified": 1779534796
 }

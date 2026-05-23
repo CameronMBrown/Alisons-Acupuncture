@@ -1,0 +1,50 @@
+// Keyframes
+@keyframes rotate-360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-360--reverse {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes bob-up-down {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+// Mixins
+@mixin rotate360($duration: 6s, $timing: linear, $iteration: infinite) {
+  animation: rotate-360 $duration $timing $iteration;
+}
+@mixin rotate360--reverse($duration: 6s, $timing: linear, $iteration: infinite) {
+  animation: rotate-360 $duration $timing $iteration;
+}
+
+@mixin bobbing($duration: 3s, $distance: 12px, $timing: ease-in-out, $iteration: infinite) {
+  @keyframes bob-up-down-#{$distance} {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-$distance);
+    }
+  }
+
+  animation: bob-up-down-#{$distance} $duration $timing $iteration;
+}

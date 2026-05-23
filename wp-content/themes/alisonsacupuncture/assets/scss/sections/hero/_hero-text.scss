@@ -1,0 +1,98 @@
+@use "../../variables";
+
+.hero-text {
+  flex: 1;
+  text-align: left;
+
+  .hero-greeting {
+    font-size: 12rem;
+    font-weight: 900;
+    opacity: 0.5;
+    color: transparent;
+    background: linear-gradient(to top, #ff9c231a 0%, variables.$accent-color 50%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    margin: 0 0 -7rem -2rem;
+    z-index: -1;
+  }
+
+  .hero-title {
+    font-size: 8rem;
+    font-weight: 700;
+    color: variables.$primary-color;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    filter: drop-shadow(0 0 5px variables.$light-bg);
+  }
+
+  .hero-subtitle {
+    font-size: 1.4rem;
+    color: variables.$secondary-color;
+    margin: 0.8rem 0 2rem 0;
+    font-weight: 500;
+    max-width: 500px;
+    line-height: 125%;
+  }
+
+  .hero-title--accent {
+    display: inline-block;
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: 1.1px;
+    color: variables.$secondary-color;
+    text-shadow: none;
+  }
+}
+
+@media (max-width: variables.$bp-large) {
+  .hero-text {
+    .hero-greeting {
+      font-size: 8rem;
+      margin: 0 0 -4.2rem -1.5rem;
+    }
+    .hero-title {
+      font-size: 5rem;
+    }
+
+    .hero-title--accent {
+      font-size: 2.4rem;
+    }
+  }
+}
+
+@media (max-width: variables.$bp-desktop) {
+  .hero-text {
+    .hero-greeting {
+      font-size: 6rem;
+      margin: 0 0 -3rem -1.5rem;
+    }
+
+    .hero-title {
+      font-size: 4rem;
+    }
+  }
+}
+
+@media (max-width: variables.$bp-medium) {
+  .hero-text {
+    text-align: center;
+
+    .hero-greeting {
+      font-size: 4.5rem;
+      transform: translateX(-20%);
+    }
+
+    .hero-title {
+      font-size: 4.2rem;
+    }
+
+    .hero-title--accent {
+      font-size: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.4rem;
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+    "key": "group_business_info",
+    "title": "Business Info",
+    "fields": [
+        {
+            "key": "field_6a118d555a46a",
+            "label": "Address",
+            "name": "address",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Grandhall 304 Division Street Cobourg, ON",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "Enter full address",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6a118d975a46b",
+            "label": "Phone Number",
+            "name": "phone_number",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "(905) 123-4567",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "Enter phone number",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6a118dce5a46c",
+            "label": "Email",
+            "name": "email",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "Enter the full email address",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1779535835
+}

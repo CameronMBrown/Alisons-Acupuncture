@@ -1,42 +1,49 @@
 <?php
+$days = [
+  'sunday'    => 'Sunday',
+  'monday'    => 'Monday',
+  'tuesday'   => 'Tuesday',
+  'wednesday' => 'Wednesday',
+  'thursday'  => 'Thursday',
+  'friday'    => 'Friday',
+  'saturday'  => 'Saturday',
+];
 
-/**
- * Front Page Hours Section
- */
+$img_id = get_field('hours_background_image');
+$hours_image = wp_get_attachment_image_src($img_id, 'full');
+$hours_alt_txt = get_post_meta($img_id, '_wp_attachment_image_alt', true);
 ?>
-<section id="hours" class="hours-section">
-  <div class="cntr">
-    <h2><?php the_field('hours_title'); ?></h2>
-    <div class="hours-grid">
-      <div class="hours-day">
-        <strong>Monday</strong>
-        <p><?php the_field('hours_monday'); ?></p>
-      </div>
-      <div class="hours-day">
-        <strong>Tuesday</strong>
-        <p><?php the_field('hours_tuesday'); ?></p>
-      </div>
-      <div class="hours-day">
-        <strong>Wednesday</strong>
-        <p><?php the_field('hours_wednesday'); ?></p>
-      </div>
-      <div class="hours-day">
-        <strong>Thursday</strong>
-        <p><?php the_field('hours_thursday'); ?></p>
-      </div>
-      <div class="hours-day">
-        <strong>Friday</strong>
-        <p><?php the_field('hours_friday'); ?></p>
-      </div>
-      <div class="hours-day">
-        <strong>Saturday</strong>
-        <p><?php the_field('hours_saturday'); ?></p>
-      </div>
-      <div class="hours-day">
-        <strong>Sunday</strong>
-        <p><?php the_field('hours_sunday'); ?></p>
-      </div>
+
+<section class="hours-section">
+
+  <?php if (!empty($hours_image)) : ?>
+    <div class="hours-image">
+      <img
+        src="<?php echo esc_url($hours_image[0]); ?>"
+        alt="<?php echo esc_attr($hours_alt_txt); ?>">
     </div>
-    <p class="hours-note"><?php the_field('hours_note'); ?></p>
+  <?php endif; ?>
+  <div class="hours-layout">
+    <div class="hours-content">
+      <h2 class="text-3d-shadow"><?php the_field('hours_title'); ?></h2>
+      <table class="hours-table">
+        <tbody>
+          <?php foreach ($days as $day_key => $day_label) : ?>
+            <?php
+            $hours_value = get_field('hours_' . $day_key);
+            $is_closed = is_string($hours_value) && strtolower(trim($hours_value)) === 'closed';
+            ?>
+            <tr class="<?php echo $is_closed ? 'closed' : ''; ?>">
+              <th scope="row"><?php echo esc_html($day_label); ?></th>
+              <td><?php echo esc_html($hours_value); ?></td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+
+      <?php if (get_field('hours_note')) : ?>
+        <p class="hours-note"><?php the_field('hours_note'); ?></p>
+      <?php endif; ?>
+    </div>
   </div>
 </section>

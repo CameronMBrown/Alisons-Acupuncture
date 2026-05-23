@@ -1,12 +1,12 @@
 @use "base";
 @use "responsive";
 @use "variables";
+@use "animations";
 @use "dev";
 
 /* Import section styles */
-@use "sections/hero";
-
-@use "sections/hours";
+@use "sections/hero/hero";
+@use "sections/hours/hours";
 @use "sections/about";
 @use "sections/testimonials";
 @use "sections/services";
