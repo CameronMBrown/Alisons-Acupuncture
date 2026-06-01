@@ -26,7 +26,11 @@ body {
 .cntr {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 1rem 5%;
+}
+.cntr.left {
+  width: 100%;
+  float: left;
 }
 
 .text-3d-shadow {
@@ -276,7 +280,6 @@ body:has(#wpadminbar) .site {
 }
 .hero-section .hero-content {
   width: 100%;
-  padding: 0 5%;
 }
 
 .hero-background {
@@ -305,7 +308,7 @@ body:has(#wpadminbar) .site {
   background-color: #5b7e3c;
   color: white;
   padding: 1rem 2.5rem;
-  font-size: 1rem;
+  font-size: 1.4rem;
   font-weight: 600;
   border: none;
   border-radius: 6px;
@@ -410,7 +413,7 @@ body:has(#wpadminbar) .site {
   text-align: left;
   width: 40%;
   color: #5b7e3c;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 700;
 }
 .hours-table td {
@@ -499,11 +502,11 @@ body:has(#wpadminbar) .site {
     min-height: auto;
     margin: 0;
   }
-  .hours-content {
-    padding: 0;
+  .hours-layout .hours-content {
     text-align: center;
+    max-width: none;
   }
-  .hours-content h2 {
+  .hours-layout .hours-content h2 {
     margin-bottom: 1.5rem;
   }
   .hours-image {
@@ -518,9 +521,6 @@ body:has(#wpadminbar) .site {
   .hours-layout {
     grid-template-columns: 1fr;
   }
-  .hours-content {
-    padding: 0;
-  }
   .hours-content h2 {
     margin-bottom: 1.5rem;
   }
@@ -529,27 +529,47 @@ body:has(#wpadminbar) .site {
   }
 }
 .about-section {
+  position: relative;
   padding: 4rem 0;
   background-color: white;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+}
+.about-section .about-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-position: 50% 50%;
+  object-fit: cover;
+  opacity: 0.3;
+  filter: brightness(1.2) blur(2px);
+  z-index: 0;
 }
 
 .about-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
+  position: relative;
   margin-bottom: 3rem;
+  max-width: 768px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 1;
 }
 
 .about-section h2 {
-  font-size: 2rem;
+  font-size: 4rem;
   color: #5b7e3c;
   margin-bottom: 1rem;
 }
 
 .about-section p {
   color: #555;
-  line-height: 1.8;
+  line-height: 1.4;
+  font-size: 1.6rem;
+  font-weight: 700;
 }
 
 .about-image {
@@ -717,7 +737,7 @@ body:has(#wpadminbar) .site {
     box-shadow: none;
   }
   .site-header:has(.menu-toggle:checked) ul {
-    padding: 1rem 0;
+    padding: 1rem;
   }
 }
 
@@ -726,6 +746,11 @@ body:has(#wpadminbar) .site {
   justify-content: space-between;
   align-items: center;
   margin: 0 2rem;
+}
+.main-navigation .nav-btns-wr {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 .main-navigation ul.menu {
   list-style: none;
@@ -746,7 +771,6 @@ body:has(#wpadminbar) .site {
     width: 100%;
     background-color: rgb(249, 247, 244);
     backdrop-filter: blur(10px);
-    padding: 1rem 0;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     max-height: 0;
     overflow: hidden;
@@ -757,8 +781,11 @@ body:has(#wpadminbar) .site {
 .main-navigation ul.menu .nav-label {
   margin-bottom: -2px;
 }
-.main-navigation a,
-.main-navigation a:not(.site-logo) {
+.main-navigation ul.menu li {
+  display: flex;
+  align-items: center;
+}
+.main-navigation a:not(.site-logo, .nav-phone-link) {
   color: #5b7e3c;
   text-decoration: none;
   font-weight: 500;
@@ -770,16 +797,13 @@ body:has(#wpadminbar) .site {
   gap: 0.5rem;
 }
 @media (max-width: 768px) {
-  .main-navigation a,
-  .main-navigation a:not(.site-logo) {
+  .main-navigation a:not(.site-logo, .nav-phone-link) {
     padding: 0.2rem 1rem;
     justify-content: center;
     font-size: 1.8rem;
   }
 }
-.main-navigation a:hover, .main-navigation a:focus,
-.main-navigation a:not(.site-logo):hover,
-.main-navigation a:not(.site-logo):focus {
+.main-navigation a:not(.site-logo, .nav-phone-link):hover, .main-navigation a:not(.site-logo, .nav-phone-link):focus {
   background-color: #5b7e3c;
   color: white;
   transform: translateY(-3px);
@@ -799,10 +823,18 @@ body:has(#wpadminbar) .site {
   height: 100%;
   width: auto;
 }
-.main-navigation .nav-btns-wr {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.main-navigation .nav-phone-link {
+  color: #5b7e3c;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease;
+}
+@media (max-width: 768px) {
+  .main-navigation .nav-phone-link {
+    display: none;
+  }
 }
 
 .main-navigation svg {

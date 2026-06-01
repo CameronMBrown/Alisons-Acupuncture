@@ -5,8 +5,12 @@
  */
 
 $phone_number = get_field('phone_number');
+$phone_href = '';
 
-do_action('qm/debug',  $phone_number); // Debugging line to check the phone number field value
+if ($phone_number) {
+  $phone_href = preg_replace('/(?!^\+)[^\d]/', '', trim($phone_number));
+}
+
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -88,14 +92,8 @@ do_action('qm/debug',  $phone_number); // Debugging line to check the phone numb
                 </svg>
                 <p class="nav-label">Contact</p>
               </a>
-              <?php if ($phone_number) : ?>
-                <a href="tel:<?php echo esc_attr($phone_number); ?>" class="nav-phone-link">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2 3C2 2.44772 2.44772 2 3 2H6C6.55228 2 7 2.44772 7 3V5C7 5.55228 6.55228 6 6 6H4C4.55228 6 4 6.44772 4 7V9C4 9.55228 3.55228 10 3 10H2C1.44772 10 1 9.55228 1 9V3Z" fill="currentColor" />
-                    <path d="M10.7071 3.70711C11.0976 3.31658 11.7308 3.31658 12.1213 3.70711L15.1213 6.70711C15.5118 7.09763 15.5118 7.73085 15.1213 8.12138L14.4142 8.82845C14.0237 9.21897 13.3905 9.21897 13 -8e-07L10.7071 -0.707107C10.3166 -1.09763 9.68342 -1.09763 9.29289 -0.707107L8.58579 -0.00000000000000012246467991473532C8.19526 -0.609523 -0 -1e-06 -0 -1e-06L10.7071 -0.707107Z" fill="currentColor" />
-                    <path d="M17.7071 -0.292893C18.0976 -0.6834170000000001 18.7308 -0.6834170000000001 19.1213 -0.292893L22.1213 -0.292893C22.5118 -0.9024169999999999 22.5118 -0.2692049999999999 22.1213 0.12132L21.4142 0.828384C21.0237 1.21891 20.3905 1.21891 20 -1e-06L17.7071 -0.707107C17.3166 -1.09763 16.6834 -1.09763 16.2929 -0.707107L15.5858 -0.00000000000000012246467991473532C15.1953 -0.609523 -0 -1e-06 -0 -1e-06L17.7071 -0.292893Z" fill="currentColor" />
-                  </svg>
-                </a>
+              <?php if ($phone_number && $phone_href) : ?>
+                <a href="tel:<?php echo esc_attr($phone_href); ?>" class="nav-phone-link"><?php echo esc_attr($phone_number); ?></a>
               <?php endif; ?>
             </li>
           </ul>

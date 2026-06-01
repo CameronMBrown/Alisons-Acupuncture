@@ -18,7 +18,12 @@ body {
 .cntr {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 1rem 5%;
+
+  &.left {
+    width: 100%;
+    float: left;
+  }
 }
 
 .text-3d-shadow {

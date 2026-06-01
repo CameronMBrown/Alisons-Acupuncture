@@ -3,64 +3,6 @@
     "title": "Homepage Settings",
     "fields": [
         {
-            "key": "field_69fe42a4cecc9",
-            "label": "Business Info",
-            "name": "",
-            "aria-label": "",
-            "type": "accordion",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "open": 0,
-            "multi_expand": 0,
-            "endpoint": 0
-        },
-        {
-            "key": "field_business_address",
-            "label": "Business Address",
-            "name": "business_address",
-            "aria-label": "",
-            "type": "textarea",
-            "instructions": "",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Grandhall 304 Division Street\nCobourg, ON",
-            "placeholder": "Enter full address",
-            "rows": 3,
-            "new_lines": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_business_phone",
-            "label": "Business Phone",
-            "name": "business_phone",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "(905) 123-4567",
-            "placeholder": "Enter phone number",
-            "maxlength": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_69fe4293cecc8",
             "label": "Hero Section",
             "name": "",
@@ -159,21 +101,22 @@
                 },
                 {
                     "key": "field_header_tagline",
-                    "label": "Header Tagline",
+                    "label": "Header Paragraph",
                     "name": "header_tagline",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
-                    "required": false,
-                    "conditional_logic": false,
+                    "required": 0,
+                    "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
                     },
                     "default_value": "Healing Through Traditional Chinese Medicine",
-                    "placeholder": "Enter a short introduction or tagline",
                     "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "Enter a short introduction or tagline",
                     "prepend": "",
                     "append": ""
                 }
@@ -203,6 +146,24 @@
             "max_height": 0,
             "max_size": 0,
             "mime_types": ""
+        },
+        {
+            "key": "field_6a135422ca4cd",
+            "label": "About Section",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
         },
         {
             "key": "field_about_title",
@@ -248,6 +209,27 @@
             "max_height": 0,
             "max_size": 0,
             "mime_types": ""
+        },
+        {
+            "key": "field_6a13544fca4cf",
+            "label": "About Body Text",
+            "name": "about_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_69fe4311ceccb",
@@ -472,6 +454,27 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_6a135439ca4ce",
+            "label": "",
+            "name": "",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -495,5 +498,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1779534796
+    "modified": 1779651720
 }

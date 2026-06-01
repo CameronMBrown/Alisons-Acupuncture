@@ -78,14 +78,14 @@
     gap: 2rem;
     min-height: auto;
     margin: 0;
-  }
 
-  .hours-content {
-    padding: 0;
-    text-align: center;
+    .hours-content {
+      text-align: center;
+      max-width: none;
 
-    h2 {
-      margin-bottom: 1.5rem;
+      h2 {
+        margin-bottom: 1.5rem;
+      }
     }
   }
 
@@ -102,10 +102,6 @@
 
   .hours-layout {
     grid-template-columns: 1fr;
-  }
-
-  .hours-content {
-    padding: 0;
   }
 
   .hours-content h2 {
