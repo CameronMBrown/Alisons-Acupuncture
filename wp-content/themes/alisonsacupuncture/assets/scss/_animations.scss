@@ -48,3 +48,72 @@
 
   animation: bob-up-down-#{$distance} $duration $timing $iteration;
 }
+
+// ========================================
+// Viewport-triggered scroll animations
+// ========================================
+
+// Config — change these to adjust timing
+$animation-duration: 0.7s;
+$animation-timing: ease-out;
+$animation-offset: 20%;
+
+@keyframes fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slide-in-left {
+  0%   { opacity: 0; transform: translateX(-$animation-offset); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  0%   { opacity: 0; transform: translateX($animation-offset); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-bottom {
+  0%   { opacity: 0; transform: translateY($animation-offset); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-top {
+  0%   { opacity: 0; transform: translateY(-$animation-offset); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+// Initial hidden state
+.fade-in,
+.slide-in-left,
+.slide-in-right,
+.slide-in-bottom,
+.slide-in-top {
+  opacity: 0;
+}
+
+// Animated state (triggered by JS adding .is-visible)
+.fade-in.is-visible {
+  animation: fade-in $animation-duration $animation-timing forwards;
+}
+
+.slide-in-left.is-visible {
+  animation: slide-in-left $animation-duration $animation-timing forwards;
+}
+
+.slide-in-right.is-visible {
+  animation: slide-in-right $animation-duration $animation-timing forwards;
+}
+
+.slide-in-bottom.is-visible {
+  animation: slide-in-bottom $animation-duration $animation-timing forwards;
+}
+
+.slide-in-top.is-visible {
+  animation: slide-in-top $animation-duration $animation-timing forwards;
+}
+
+// Delay utility classes (add alongside a slide/fade class for staggered effects)
+.delay-short.is-visible  { animation-delay: 300ms; }
+.delay-regular.is-visible { animation-delay: 500ms; }
+.delay-long.is-visible   { animation-delay: 800ms; }

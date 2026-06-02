@@ -8,6 +8,30 @@
 add_action('wp_enqueue_scripts', function () {
   wp_enqueue_style('oceanwp-parent-style', get_template_directory_uri() . '/style.css');
   wp_enqueue_style('alisonsacupuncture-custom', get_stylesheet_directory_uri() . '/assets/css/custom.css', array('oceanwp-parent-style'), '1.0.0');
+
+  wp_enqueue_script(
+    'alisonsacupuncture-animations',
+    get_stylesheet_directory_uri() . '/assets/js/animations.js',
+    array(),
+    '1.0.0',
+    true
+  );
+
+  wp_enqueue_script(
+    'alisonsacupuncture-hero-parallax',
+    get_stylesheet_directory_uri() . '/assets/js/hero-parallax.js',
+    array('alisonsacupuncture-animations'),
+    '1.0.0',
+    true
+  );
+
+  wp_enqueue_script(
+    'alisonsacupuncture-about-parallax',
+    get_stylesheet_directory_uri() . '/assets/js/about-parallax.js',
+    array(),
+    '1.0.0',
+    true
+  );
 });
 
 // ACF JSON save and load paths

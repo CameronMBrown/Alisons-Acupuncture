@@ -12,11 +12,11 @@ $bg_image_url = $bg_image_id ? wp_get_attachment_image_url($bg_image_id, 'full')
 ?>
 <section id="about" class="about-section">
   <img class="about-bg" src="<?php echo esc_url($bg_image_url); ?>" alt="<?php echo esc_attr($title); ?>">
-  <div class="cntr left">
+  <div class="cntr">
     <div class="about-content">
       <div class="about-text">
-        <h2 class="text-3d-shadow"><?php echo esc_html($title); ?></h2>
-        <p><?php echo esc_html($body); ?></p>
+        <h2 class="text-3d-shadow slide-in-left"><?php echo esc_html($title); ?></h2>
+        <p class="slide-in-left"><?php echo esc_html($body); ?></p>
       </div>
     </div>
   </div>

@@ -19,12 +19,10 @@ $services = [
 ];
 
 $logo = wp_get_attachment_image(141, 'full', false, ['class' => 'service-card-logo']);
-do_action('qm/debug', $logo);
-
 ?>
 <section id="services" class="services-section">
   <div class="cntr">
-    <h2 class="text-3d-shadow"><?php the_field('services_title'); ?></h2>
+    <h2 class="text-3d-shadow slide-in-bottom"><?php the_field('services_title'); ?></h2>
     <div class="services-grid">
       <?php foreach ($services as $key => $fields) :
         $group = get_field($key);
@@ -33,7 +31,7 @@ do_action('qm/debug', $logo);
         $image_id = $group[$fields['img']] ?? '';
         $image_url = $image_id ? wp_get_attachment_image_url($image_id, 'large') : '';
       ?>
-        <div class="service-card" tabindex="0">
+        <div class="service-card slide-in-bottom" tabindex="0">
           <div class="service-card-inner">
             <div class="service-card-front" <?php echo $image_url ? ' style="background-image: url(' . esc_url($image_url) . ')"' : ''; ?>>
               <h3 class="text-3d-shadow"><?php echo esc_html($title); ?></h3>

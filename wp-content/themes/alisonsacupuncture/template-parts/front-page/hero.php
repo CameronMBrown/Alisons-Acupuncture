@@ -14,19 +14,34 @@ $tagline = $header['header_tagline'];
 $img_id = get_field('hero_avatar_image');
 $portrait_src = wp_get_attachment_image_src($img_id, 'full');
 $portrait_alt = get_post_meta($img_id, '_wp_attachment_image_alt', true);
+
+$trees = wp_get_attachment_image_src(142, 'full', false,);
 ?>
 
 <section id="hero" class="hero-section">
-  <div class="hero-background"></div>
+  <div class="hero-background-shadow"></div>
+  <div class="trees-background trees-1">
+    <img src="<?php echo esc_url($trees[0]); ?>" alt="A silhouette of an evergreen tree line">
+  </div>
+  <div class="trees-background trees-2">
+    <img src="<?php echo esc_url($trees[0]); ?>" alt="A silhouette of an evergreen tree line">
+  </div>
+
+  <div class="trees-background trees-3">
+    <img src="<?php echo esc_url($trees[0]); ?>" alt="A silhouette of an evergreen tree line">
+  </div>
+  <div class="trees-background trees-4">
+    <img src="<?php echo esc_url($trees[0]); ?>" alt="A silhouette of an evergreen tree line">
+  </div>
   <div class="hero-content">
     <div class="cntr hero-layout">
       <div class="hero-text">
-        <p class="hero-greeting"><?php echo esc_html($greeting); ?></p>
-        <h1 class="hero-title text-3d-shadow">
+        <p class="hero-greeting slide-in-bottom"><?php echo esc_html($greeting); ?></p>
+        <h1 class="hero-title text-3d-shadow slide-in-bottom delay-short">
           <?php echo esc_html($title); ?>
-          <span class="hero-title--accent"><?php echo esc_html($certification); ?></span>
+          <span class="hero-title--accent slide-in-bottom delay-regular"><?php echo esc_html($certification); ?></span>
         </h1>
-        <p class="hero-subtitle"><?php echo esc_html($tagline); ?></p>
+        <p class="hero-subtitle slide-in-bottom delay-long"><?php echo esc_html($tagline); ?></p>
         <button class="hero-cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
           Book an Appointment
         </button>
