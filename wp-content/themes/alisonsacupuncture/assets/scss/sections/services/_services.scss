@@ -30,16 +30,21 @@
   &:focus-within .service-card-inner {
     transform: rotateY(180deg);
   }
-}
 
-@media (max-width: variables.$bp-desktop) {
-  .service-card {
+  // Row-aware stagger: 3 columns → 0ms, 200ms, 400ms
+  &.slide-in-bottom.is-visible:nth-child(3n+1) { animation-delay: 0ms; }
+  &.slide-in-bottom.is-visible:nth-child(3n+2) { animation-delay: 200ms; }
+  &.slide-in-bottom.is-visible:nth-child(3n+3) { animation-delay: 400ms; }
+
+  @media (max-width: variables.$bp-desktop) {
     width: calc((100% - 2rem) / 2);
-  }
-}
 
-@media (max-width: variables.$bp-medium) {
-  .service-card {
+    // 2-column stagger: 0ms, 200ms
+    &.slide-in-bottom.is-visible:nth-child(2n+1) { animation-delay: 0ms; }
+    &.slide-in-bottom.is-visible:nth-child(2n+2) { animation-delay: 200ms; }
+  }
+
+  @media (max-width: variables.$bp-medium) {
     width: 100%;
   }
 }

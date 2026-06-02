@@ -1,3 +1,6 @@
+/* ----------------------------------------------- */
+// Colors
+/* ----------------------------------------------- */
 $primary-color: #5b7e3c;
 $text-light: #f9f7f4;
 $secondary-color: #3d3224;
@@ -7,8 +10,16 @@ $text-color: #333;
 $light-bg: #f9f7f4;
 $border-color: #e0ddd9;
 $offwhite: rgba(249, 247, 244, 1);
+
+/* ----------------------------------------------- */
+// Fonts
+/* ----------------------------------------------- */
 $body-font:
   -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+/* ----------------------------------------------- */
+// Breakpoints
+/* ----------------------------------------------- */
 $bp-large: 1200px;
 $bp-desktop: 992px;
 $bp-medium: 768px;

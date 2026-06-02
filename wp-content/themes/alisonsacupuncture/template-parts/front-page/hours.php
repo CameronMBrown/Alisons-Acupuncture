@@ -14,7 +14,7 @@ $hours_image = wp_get_attachment_image_src($img_id, 'full');
 $hours_alt_txt = get_post_meta($img_id, '_wp_attachment_image_alt', true);
 ?>
 
-<section class="hours-section">
+<section class="hours-section" id="hours">
 
   <?php if (!empty($hours_image)) : ?>
     <div class="hours-image">
@@ -25,8 +25,8 @@ $hours_alt_txt = get_post_meta($img_id, '_wp_attachment_image_alt', true);
   <?php endif; ?>
   <div class="hours-layout">
     <div class="hours-content">
-      <h2 class="text-3d-shadow"><?php the_field('hours_title'); ?></h2>
-      <table class="hours-table">
+      <h2 class="text-3d-shadow slide-in-right"><?php the_field('hours_title'); ?></h2>
+      <table class="hours-table slide-in-right">
         <tbody>
           <?php foreach ($days as $day_key => $day_label) : ?>
             <?php
@@ -42,7 +42,7 @@ $hours_alt_txt = get_post_meta($img_id, '_wp_attachment_image_alt', true);
       </table>
 
       <?php if (get_field('hours_note')) : ?>
-        <p class="hours-note"><?php the_field('hours_note'); ?></p>
+        <p class="hours-note slide-in-right delay-regular"><?php the_field('hours_note'); ?></p>
       <?php endif; ?>
     </div>
   </div>

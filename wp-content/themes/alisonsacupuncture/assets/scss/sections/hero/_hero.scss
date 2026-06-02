@@ -1,6 +1,7 @@
 @use "../../variables";
 @use "hero-accents";
 @use "hero-text";
+@use "hero-trees";
 
 .hero-section {
   position: relative;
@@ -15,10 +16,11 @@
 
   .hero-content {
     width: 100%;
+    z-index: 100;
   }
 }
 
-.hero-background {
+.hero-background-shadow {
   position: absolute;
   top: -50%;
   right: -20%;
