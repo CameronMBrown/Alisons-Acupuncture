@@ -27,6 +27,27 @@
   }
 }
 
+/* ---- Hours section background blobs ---- */
+@keyframes blob-drift-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(0, -10px) rotate(-9deg);
+  }
+}
+
+@keyframes blob-drift-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(0, -8px) rotate(7deg);
+  }
+}
+
 // Mixins
 @mixin rotate360($duration: 6s, $timing: linear, $iteration: infinite) {
   animation: rotate-360 $duration $timing $iteration;
@@ -59,28 +80,56 @@ $animation-timing: ease-out;
 $animation-offset: 20%;
 
 @keyframes fade-in {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes slide-in-left {
-  0%   { opacity: 0; transform: translateX(-$animation-offset); }
-  100% { opacity: 1; transform: translateX(0); }
+  0% {
+    opacity: 0;
+    transform: translateX(-$animation-offset);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes slide-in-right {
-  0%   { opacity: 0; transform: translateX($animation-offset); }
-  100% { opacity: 1; transform: translateX(0); }
+  0% {
+    opacity: 0;
+    transform: translateX($animation-offset);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes slide-in-bottom {
-  0%   { opacity: 0; transform: translateY($animation-offset); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY($animation-offset);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slide-in-top {
-  0%   { opacity: 0; transform: translateY(-$animation-offset); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(-$animation-offset);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 // Initial hidden state
@@ -114,6 +163,12 @@ $animation-offset: 20%;
 }
 
 // Delay utility classes (add alongside a slide/fade class for staggered effects)
-.delay-short.is-visible  { animation-delay: 300ms; }
-.delay-regular.is-visible { animation-delay: 500ms; }
-.delay-long.is-visible   { animation-delay: 800ms; }
+.delay-short.is-visible {
+  animation-delay: 300ms;
+}
+.delay-regular.is-visible {
+  animation-delay: 500ms;
+}
+.delay-long.is-visible {
+  animation-delay: 800ms;
+}

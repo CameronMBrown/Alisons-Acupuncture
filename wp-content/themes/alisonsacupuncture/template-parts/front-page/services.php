@@ -29,11 +29,15 @@ $logo = wp_get_attachment_image(141, 'full', false, ['class' => 'service-card-lo
         $title = $group[$fields['title']] ?? '';
         $description = $group[$fields['desc']] ?? '';
         $image_id = $group[$fields['img']] ?? '';
-        $image_url = $image_id ? wp_get_attachment_image_url($image_id, 'large') : '';
+        $image_html = $image_id ? wp_get_attachment_image($image_id, 'large', false, [
+          'class'   => 'service-card-image',
+          'loading' => 'lazy',
+        ]) : '';
       ?>
         <div class="service-card slide-in-bottom" tabindex="0">
           <div class="service-card-inner">
-            <div class="service-card-front" <?php echo $image_url ? ' style="background-image: url(' . esc_url($image_url) . ')"' : ''; ?>>
+            <div class="service-card-front">
+              <?php echo $image_html; ?>
               <h3 class="text-3d-shadow"><?php echo esc_html($title); ?></h3>
             </div>
             <div class="service-card-back">

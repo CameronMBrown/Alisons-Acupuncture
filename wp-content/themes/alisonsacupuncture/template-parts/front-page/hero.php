@@ -19,19 +19,20 @@ $trees = wp_get_attachment_image_src(142, 'full', false,);
 ?>
 
 <section id="hero" class="hero-section">
-  <div class="hero-background-shadow"></div>
-  <div class="trees-background trees-1">
-    <img src="<?php echo esc_url($trees[0]); ?>" alt="A silhouette of an evergreen tree line">
-  </div>
-  <div class="trees-background trees-2">
-    <img src="<?php echo esc_url($trees[0]); ?>" alt="A silhouette of an evergreen tree line">
-  </div>
+  <div class="trees-background-container">
+    <div class="trees-background trees-1">
+      <img src="<?php echo esc_url($trees[0]); ?>" alt="A silhouette of an evergreen tree line" loading="eager">
+    </div>
+    <div class="trees-background trees-2">
+      <img src="<?php echo esc_url($trees[0]); ?>" alt="A silhouette of an evergreen tree line" loading="eager">
+    </div>
 
-  <div class="trees-background trees-3">
-    <img src="<?php echo esc_url($trees[0]); ?>" alt="A silhouette of an evergreen tree line">
-  </div>
-  <div class="trees-background trees-4">
-    <img src="<?php echo esc_url($trees[0]); ?>" alt="A silhouette of an evergreen tree line">
+    <div class="trees-background trees-3">
+      <img src="<?php echo esc_url($trees[0]); ?>" alt="A silhouette of an evergreen tree line" loading="eager">
+    </div>
+    <div class="trees-background trees-4">
+      <img src="<?php echo esc_url($trees[0]); ?>" alt="A silhouette of an evergreen tree line" loading="eager">
+    </div>
   </div>
   <div class="hero-content">
     <div class="cntr hero-layout">
@@ -48,7 +49,7 @@ $trees = wp_get_attachment_image_src(142, 'full', false,);
       </div>
       <div class="hero-image-wrapper">
         <div class="hero-image-frame">
-          <img src="<?php echo esc_url($portrait_src[0]); ?>" alt="<?php echo esc_attr($portrait_alt); ?>" class="hero-avatar">
+          <img src="<?php echo esc_url($portrait_src[0]); ?>" alt="<?php echo esc_attr($portrait_alt); ?>" class="hero-avatar" loading="eager">
         </div>
         <div class="hero-decorative-elements">
           <div class="hero-accent-wrapper">
