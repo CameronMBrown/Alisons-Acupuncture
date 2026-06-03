@@ -1,0 +1,54 @@
+@use "../variables";
+
+.error-404-section {
+  min-height: 800px;
+  height: 100vh;
+
+  .error-404-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+
+    h1 {
+      font-size: 4rem;
+    }
+  }
+
+  .error-404-logo-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1;
+
+    img {
+      max-width: 60%;
+      height: auto;
+      opacity: 0.06;
+    }
+  }
+
+  .hero-section {
+    margin-top: 6rem;
+  }
+
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .trees-background-container {
+    z-index: 2;
+
+    .trees-3 {
+      bottom: 5%;
+    }
+    .trees-4 {
+      bottom: 0;
+    }
+  }
+}

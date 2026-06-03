@@ -850,7 +850,7 @@ body:has(#wpadminbar) .site {
 @media (min-width: 2000px) {
   .about-section {
     background-color: #f9f7f4;
-    padding: 2rem 0;
+    padding: 2rem;
   }
   .about-wr {
     max-width: 2000px;
@@ -858,6 +858,7 @@ body:has(#wpadminbar) .site {
     margin: 0 auto;
     border-radius: 32px;
     overflow: hidden;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
   }
 }
 .testimonials-section {
@@ -923,6 +924,7 @@ body:has(#wpadminbar) .site {
   max-width: 400px;
   perspective: 1000px;
   cursor: pointer;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
 }
 .service-card:hover .service-card-inner, .service-card:focus-within .service-card-inner {
   transform: rotateY(180deg);
@@ -1059,6 +1061,51 @@ body:has(#wpadminbar) .site {
 
 .contact-info a:hover {
   text-decoration: underline;
+}
+
+.error-404-section {
+  min-height: 800px;
+  height: 100vh;
+}
+.error-404-section .error-404-content {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.error-404-section .error-404-content h1 {
+  font-size: 4rem;
+}
+.error-404-section .error-404-logo-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+}
+.error-404-section .error-404-logo-bg img {
+  max-width: 60%;
+  height: auto;
+  opacity: 0.06;
+}
+.error-404-section .hero-section {
+  margin-top: 6rem;
+}
+.error-404-section .hero-subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+.error-404-section .trees-background-container {
+  z-index: 2;
+}
+.error-404-section .trees-background-container .trees-3 {
+  bottom: 5%;
+}
+.error-404-section .trees-background-container .trees-4 {
+  bottom: 0;
 }
 
 /* component styles can be added here if needed */
