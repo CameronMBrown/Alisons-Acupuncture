@@ -66,7 +66,7 @@
 @media (min-width: variables.$bp-ultrawide) {
   .about-section {
     background-color: #f9f7f4;
-    padding: 2rem 0;
+    padding: 2rem;
   }
   .about-wr {
     max-width: 2000px;
@@ -74,5 +74,6 @@
     margin: 0 auto;
     border-radius: 32px;
     overflow: hidden;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
   }
 }

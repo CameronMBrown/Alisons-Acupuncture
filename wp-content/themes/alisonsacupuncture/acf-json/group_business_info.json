@@ -3,27 +3,6 @@
     "title": "Business Info",
     "fields": [
         {
-            "key": "field_6a118d555a46a",
-            "label": "Address",
-            "name": "address",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Grandhall 304 Division Street Cobourg, ON",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "Enter full address",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_6a118d975a46b",
             "label": "Phone Number",
             "name": "phone_number",
@@ -64,6 +43,27 @@
             "placeholder": "Enter the full email address",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_6a118d555a46a",
+            "label": "Address",
+            "name": "address",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Grandhall 304 Division Street Cobourg, ON",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "Enter full address",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -87,5 +87,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1779535835
+    "modified": 1780501864
 }
