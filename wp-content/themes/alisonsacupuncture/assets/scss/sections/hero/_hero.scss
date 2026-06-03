@@ -20,17 +20,6 @@
   }
 }
 
-.hero-background-shadow {
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(45, 80, 22, 0.08) 0%, rgba(45, 80, 22, 0) 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
 .hero-layout {
   display: flex;
   align-items: center;

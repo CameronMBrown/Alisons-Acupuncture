@@ -1,12 +1,61 @@
 @use "../../variables";
 @use "hours-table";
+@use "../../animations";
 
 .hours-section {
-  background-color: variables.$primary-color;
+  background: linear-gradient(135deg, #4a6a30 0%, #5b7e3c 40%, #6d9145 100%);
+  position: relative;
   padding: 0 2rem 0 0;
   overflow: hidden;
   display: flex;
   gap: 3rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -30%;
+    right: -5%;
+    width: 70%;
+    height: 160%;
+    background: radial-gradient(
+      ellipse at 50% 50%,
+      rgba(255, 214, 90, 0.1) 0%,
+      rgba(255, 157, 35, 0.04) 40%,
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -60px;
+    right: -40px;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 214, 90, 0.04);
+    border-radius: 60% 40% 70% 30% / 50% 55% 45% 50%;
+    pointer-events: none;
+    z-index: 1;
+    animation: blob-drift-1 8s ease-in-out infinite;
+  }
+}
+
+.hours-blob {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 40% 60% 30% 70% / 55% 45% 40% 60%;
+  background: rgba(255, 214, 90, 0.04);
+  pointer-events: none;
+  z-index: 1;
+
+  &--top-left {
+    top: -80px;
+    left: -60px;
+    animation: blob-drift-2 10s ease-in-out infinite;
+  }
 }
 
 .hours-layout {
@@ -62,6 +111,12 @@
   font-size: 1rem;
   font-style: italic;
   margin-bottom: 0.2rem;
+}
+
+@media (min-width: variables.$bp-ultrawide) {
+  .hours-layout {
+    align-items: flex-start;
+  }
 }
 
 @media (max-width: variables.$bp-desktop) {

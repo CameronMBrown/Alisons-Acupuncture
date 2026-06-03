@@ -16,14 +16,17 @@ $hours_alt_txt = get_post_meta($img_id, '_wp_attachment_image_alt', true);
 
 <section class="hours-section" id="hours">
 
+
   <?php if (!empty($hours_image)) : ?>
     <div class="hours-image">
       <img
         src="<?php echo esc_url($hours_image[0]); ?>"
-        alt="<?php echo esc_attr($hours_alt_txt); ?>">
+        alt="<?php echo esc_attr($hours_alt_txt); ?>"
+        loading="lazy">
     </div>
   <?php endif; ?>
   <div class="hours-layout">
+    <div class="hours-blob hours-blob--top-left"></div>
     <div class="hours-content">
       <h2 class="text-3d-shadow slide-in-right"><?php the_field('hours_title'); ?></h2>
       <table class="hours-table slide-in-right">
