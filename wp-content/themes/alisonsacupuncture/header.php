@@ -94,6 +94,7 @@ if ($phone_number) {
               </a>
               <?php if ($phone_number && $phone_href) : ?>
                 <a href="tel:<?php echo esc_attr($phone_href); ?>" class="nav-phone-link"><?php echo esc_attr($phone_number); ?></a>
+                <a href="tel:<?php echo esc_attr($phone_href); ?>" class="call-now-mobile">Call Now</a>
               <?php endif; ?>
             </li>
           </ul>
