@@ -101,9 +101,9 @@
           dayLabel +
           " on " +
           dateStr +
-          " sometime between " +
+          " at [time between " +
           adjustedHours +
-          ". \nThanks!"
+          "].\nPlease get back to me by [phone/email] regarding your availability.\nThanks!"
 
         document.getElementById("contact").scrollIntoView({ behavior: "smooth" })
 

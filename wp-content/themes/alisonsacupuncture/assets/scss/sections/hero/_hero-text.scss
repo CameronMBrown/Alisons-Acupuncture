@@ -96,3 +96,23 @@
     }
   }
 }
+
+@media (max-width: variables.$bp-medium) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: variables.$bp-small) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+  }
+}

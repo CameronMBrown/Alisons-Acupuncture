@@ -10,8 +10,6 @@
 
   if (!targets.length) return
 
-  console.log({ targets })
-
   var observer = new IntersectionObserver(
     function (entries) {
       entries.forEach(function (entry) {
