@@ -58,6 +58,24 @@
   @media (max-width: variables.$bp-medium) {
     width: 100%;
   }
+
+  @media (min-width: variables.$bp-ultrawide) {
+    width: calc((100% - 6rem) / 4);
+    max-width: none;
+
+    &.slide-in-bottom.is-visible:nth-child(4n + 1) {
+      animation-delay: 0ms;
+    }
+    &.slide-in-bottom.is-visible:nth-child(4n + 2) {
+      animation-delay: 200ms;
+    }
+    &.slide-in-bottom.is-visible:nth-child(4n + 3) {
+      animation-delay: 400ms;
+    }
+    &.slide-in-bottom.is-visible:nth-child(4n + 4) {
+      animation-delay: 600ms;
+    }
+  }
 }
 
 .service-card-inner {
@@ -136,5 +154,11 @@
     line-height: 1.6;
     text-align: center;
     margin: 0;
+  }
+}
+
+@media (min-width: variables.$bp-ultrawide) {
+  .services-section .cntr {
+    max-width: 2000px;
   }
 }
