@@ -985,6 +985,24 @@ tr:focus-within .hours-book-btn {
     width: 100%;
   }
 }
+@media (min-width: 2000px) {
+  .service-card {
+    width: calc((100% - 6rem) / 4);
+    max-width: none;
+  }
+  .service-card.slide-in-bottom.is-visible:nth-child(4n+1) {
+    animation-delay: 0ms;
+  }
+  .service-card.slide-in-bottom.is-visible:nth-child(4n+2) {
+    animation-delay: 200ms;
+  }
+  .service-card.slide-in-bottom.is-visible:nth-child(4n+3) {
+    animation-delay: 400ms;
+  }
+  .service-card.slide-in-bottom.is-visible:nth-child(4n+4) {
+    animation-delay: 600ms;
+  }
+}
 
 .service-card-inner {
   position: relative;
@@ -1060,6 +1078,11 @@ tr:focus-within .hours-book-btn {
   margin: 0;
 }
 
+@media (min-width: 2000px) {
+  .services-section .cntr {
+    max-width: 2000px;
+  }
+}
 .contact-section {
   background-color: #5b7e3c;
   color: #fff;
@@ -1514,3 +1537,5 @@ form .btn-accent[type=submit]:visited {
     max-height: 500px;
   }
 }
+
+/*# sourceMappingURL=custom.css.map */
