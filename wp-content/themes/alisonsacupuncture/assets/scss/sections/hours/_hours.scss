@@ -26,35 +26,26 @@
     pointer-events: none;
     z-index: 1;
   }
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -60px;
-    right: -40px;
-    width: 500px;
-    height: 500px;
-    background: rgba(255, 214, 90, 0.04);
-    border-radius: 60% 40% 70% 30% / 50% 55% 45% 50%;
-    pointer-events: none;
-    z-index: 1;
-    animation: blob-drift-1 8s ease-in-out infinite;
-  }
 }
 
-.hours-blob {
+.hours-blob-svg {
   position: absolute;
   width: 500px;
   height: 500px;
-  border-radius: 40% 60% 30% 70% / 55% 45% 40% 60%;
-  background: rgba(255, 214, 90, 0.04);
+  fill: rgba(255, 214, 90, 0.1);
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
 
   &--top-left {
     top: -80px;
     left: -60px;
     animation: blob-drift-2 10s ease-in-out infinite;
+  }
+
+  &--bottom-right {
+    bottom: -60px;
+    right: -40px;
+    animation: blob-drift-1 8s ease-in-out infinite;
   }
 }
 
