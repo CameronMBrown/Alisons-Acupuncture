@@ -20,7 +20,7 @@
       box-shadow: none;
 
       ul {
-        padding: 1rem;
+        padding: 1rem 2rem;
       }
     }
   }
@@ -46,7 +46,7 @@
     padding: 0;
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.4rem;
 
     @media (max-width: 768px) {
       display: flex;
@@ -58,7 +58,6 @@
       width: 100%;
       background-color: variables.$offwhite;
       backdrop-filter: blur(10px);
-
       box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
       max-height: 0;
       overflow: hidden;
@@ -73,6 +72,7 @@
     li {
       display: flex;
       align-items: center;
+      justify-content: space-between;
     }
   }
 
@@ -120,15 +120,29 @@
   }
 
   .nav-phone-link {
-    color: variables.$primary-color;
+    color: variables.$accent-color;
     text-decoration: none;
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: 1.8rem;
+    font-weight: 500;
     padding: 0.5rem 1rem;
     transition: all 0.2s ease;
 
     @media (max-width: 768px) {
       display: none;
+    }
+  }
+
+  .call-now-mobile {
+    @media (min-width: 769px) {
+      display: none !important;
+    }
+
+    @media (max-width: 768px) {
+      background-color: variables.$accent-color;
+      color: white !important;
+      justify-content: center;
+      font-weight: 700;
+      margin-top: 0.5rem;
     }
   }
 }
@@ -163,9 +177,6 @@
 }
 
 @media (max-width: 768px) {
-  .main-navigation ul {
-  }
-
   .menu-toggle-label {
     display: block;
   }
