@@ -1,5 +1,4 @@
 @use "base";
-@use "responsive";
 @use "variables";
 @use "animations";
 @use "dev";
@@ -10,9 +9,10 @@
 @use "sections/about/about";
 @use "sections/testimonials";
 @use "sections/services/services";
-@use "sections/contact";
+@use "sections/contact/contact";
 @use "sections/error-404";
 
 /* component styles can be added here if needed */
 @use "components/buttons";
 @use "components/navigation";
+@use "components/blobs";

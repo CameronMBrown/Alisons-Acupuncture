@@ -1,7 +1,7 @@
 @use "../../variables";
 
 .services-section {
-  background: linear-gradient(135deg, variables.$light-bg 0%, white 100%);
+  background: #f9f7f4;
   padding: 4rem 0;
 }
 
@@ -75,6 +75,12 @@
     &.slide-in-bottom.is-visible:nth-child(4n + 4) {
       animation-delay: 600ms;
     }
+  }
+}
+
+@media (max-width: variables.$bp-medium) {
+  .services-grid {
+    grid-template-columns: 1fr;
   }
 }
 

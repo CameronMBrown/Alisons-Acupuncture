@@ -1,0 +1,22 @@
+@use "../animations";
+
+.blob-svg {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  fill: rgba(255, 214, 90, 0.1);
+  pointer-events: none;
+  z-index: 0;
+
+  &--top-left {
+    top: -80px;
+    left: -60px;
+    animation: blob-drift-2 10s ease-in-out infinite;
+  }
+
+  &--bottom-right {
+    bottom: -60px;
+    right: -40px;
+    animation: blob-drift-1 8s ease-in-out infinite;
+  }
+}

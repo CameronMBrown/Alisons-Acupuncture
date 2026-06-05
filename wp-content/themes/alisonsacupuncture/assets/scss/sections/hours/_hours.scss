@@ -28,27 +28,6 @@
   }
 }
 
-.hours-blob-svg {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  fill: rgba(255, 214, 90, 0.1);
-  pointer-events: none;
-  z-index: 0;
-
-  &--top-left {
-    top: -80px;
-    left: -60px;
-    animation: blob-drift-2 10s ease-in-out infinite;
-  }
-
-  &--bottom-right {
-    bottom: -60px;
-    right: -40px;
-    animation: blob-drift-1 8s ease-in-out infinite;
-  }
-}
-
 .hours-layout {
   position: relative;
   padding: 3rem 0;
@@ -152,6 +131,11 @@
 
   .hours-content h2 {
     margin-bottom: 1.5rem;
+  }
+
+  .hours-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
   }
 
   .hours-image {

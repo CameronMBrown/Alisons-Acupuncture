@@ -112,6 +112,12 @@ if (isset($_POST['contact_submit'])) {
 ?>
 
 <section id="contact" class="contact-section">
+  <svg class="blob-svg blob-svg--top-left" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M21 3v2c0 9.627-5.373 14-12 14H7.098c.212-3.012 1.15-4.835 3.598-7.001 1.204-1.065 1.102-1.68.509-1.327-4.084 2.43-6.112 5.714-6.202 10.958L5 22H3c0-1.363.116-2.6.346-3.732C3.116 16.974 3 15.218 3 13 3 7.477 7.477 3 13 3c2 0 4 1 8 0z" />
+  </svg>
+  <svg class="blob-svg blob-svg--bottom-right" viewBox="0 -32 576 576" xmlns="http://www.w3.org/2000/svg">
+    <path d="M546.2 9.7c-5.6-12.5-21.6-13-28.3-1.2C486.9 62.4 431.4 96 368 96h-80C182 96 96 182 96 288c0 7 .8 13.7 1.5 20.5C161.3 262.8 253.4 224 384 224c8.8 0 16 7.2 16 16s-7.2 16-16 16C132.6 256 26 410.1 2.4 468c-6.6 16.3 1.2 34.9 17.5 41.6 16.4 6.8 35-1.1 41.8-17.3 1.5-3.6 20.9-47.9 71.9-90.6 32.4 43.9 94 85.8 174.9 77.2C465.5 467.5 576 326.7 576 154.3c0-50.2-10.8-102.2-29.8-144.6z" />
+  </svg>
   <div class="cntr">
     <div class="contact-header slide-in-bottom">
       <h2 class="text-3d-shadow">Get in Touch</h2>
@@ -119,9 +125,9 @@ if (isset($_POST['contact_submit'])) {
         <?php if ($phone && $phone_href) : ?>
           <a href="tel:<?php echo esc_attr($phone_href); ?>" class="contact-meta-item" aria-label="Call us at <?php echo esc_attr($phone); ?>">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="16" height="16" fill="currentColor">
-              <path d="M17.22,20.16H7a2,2,0,0,1-1.87-2.71l1.93-5.14A2,2,0,0,1,8.92,11h6.37a2,2,0,0,1,1.88,1.3l1.92,5.14A2,2,0,0,1,17.22,20.16Z"/>
-              <circle cx="12.11" cy="15.59" r="2"/>
-              <path d="M2.08,5.73V8.11a2,2,0,0,0,2,2H5a2,2,0,0,0,2-2V6.84H7a25.64,25.64,0,0,1,10,0h0V8.11a2,2,0,0,0,2,2h.89a2,2,0,0,0,2-2V5.73a1,1,0,0,0-.81-1h0a46.18,46.18,0,0,0-18.22,0h0A1,1,0,0,0,2.08,5.73Z"/>
+              <path d="M17.22,20.16H7a2,2,0,0,1-1.87-2.71l1.93-5.14A2,2,0,0,1,8.92,11h6.37a2,2,0,0,1,1.88,1.3l1.92,5.14A2,2,0,0,1,17.22,20.16Z" />
+              <circle cx="12.11" cy="15.59" r="2" />
+              <path d="M2.08,5.73V8.11a2,2,0,0,0,2,2H5a2,2,0,0,0,2-2V6.84H7a25.64,25.64,0,0,1,10,0h0V8.11a2,2,0,0,0,2,2h.89a2,2,0,0,0,2-2V5.73a1,1,0,0,0-.81-1h0a46.18,46.18,0,0,0-18.22,0h0A1,1,0,0,0,2.08,5.73Z" />
             </svg>
             <?php echo esc_html($phone); ?>
           </a>
@@ -130,7 +136,7 @@ if (isset($_POST['contact_submit'])) {
         <?php if ($email) : ?>
           <a href="mailto:<?php echo esc_attr($email); ?>" class="contact-meta-item" aria-label="Email us at <?php echo esc_attr($email); ?>">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="16" height="16" fill="currentColor">
-              <path d="M22 4H2v16h20V4zm-2 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              <path d="M22 4H2v16h20V4zm-2 4l-8 5-8-5V6l8 5 8-5v2z" />
             </svg>
             <?php echo esc_html($email); ?>
           </a>
@@ -139,7 +145,7 @@ if (isset($_POST['contact_submit'])) {
         <?php if ($address) : ?>
           <a href="https://maps.google.com/maps?daddr=<?php echo esc_attr($address_encoded); ?>" target="_blank" rel="noopener noreferrer" class="contact-meta-item" aria-label="Get directions to <?php echo esc_attr($address); ?>">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="16" height="16" fill="currentColor">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
             </svg>
             <?php echo esc_html($address); ?>
           </a>
@@ -226,7 +232,7 @@ if (isset($_POST['contact_submit'])) {
             <?php wp_nonce_field('contact_form', '_wpnonce'); ?>
             <input type="hidden" name="contact_submit" value="1">
 
-            <button type="submit" class="btn btn-accent">Book Appointment</button>
+            <button type="submit" class="btn btn-accent">Send Message</button>
           </form>
         </div>
 
