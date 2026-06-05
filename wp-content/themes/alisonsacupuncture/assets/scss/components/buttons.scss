@@ -3,16 +3,17 @@
 // Base button
 .btn {
   display: inline-block;
-  padding: 0.75rem 2rem;
-  border: none;
-  border-radius: 8px;
-  font-family: inherit;
-  font-size: 1rem;
+  background-color: variables.$primary-color;
+  color: white;
+  padding: 1rem 2.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(45, 80, 22, 0.2);
   text-decoration: none;
-  line-height: 1.4;
-  transition: all 0.2s ease;
 
   &:hover {
     transform: translateY(-3px);
@@ -24,13 +25,25 @@
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) brightness(0.8);
   }
 
+  &:focus {
+    outline: none;
+  }
+
   &:focus-visible {
     outline: 3px solid variables.$accent-color;
     outline-offset: 2px;
   }
 
   &:visited {
-    color: inherit;
+    color: #d8d8d8;
+  }
+
+  a {
+    color: white;
+
+    &:hover {
+      color: white;
+    }
   }
 }
 
@@ -51,6 +64,13 @@ form .btn-accent[type="submit"] {
     color: #fff;
     background-color: variables.$accent-color;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) brightness(0.75);
+  }
+
+  &:focus {
+    color: #fff;
+    background-color: variables.$accent-color;
+    filter: brightness(0.85);
+    outline: none;
   }
 
   &:focus-visible {

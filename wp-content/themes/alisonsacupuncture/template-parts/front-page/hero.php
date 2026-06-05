@@ -43,8 +43,10 @@ $trees = wp_get_attachment_image_src(142, 'full', false,);
           <span class="hero-title--accent slide-in-bottom delay-regular"><?php echo esc_html($certification); ?></span>
         </h1>
         <p class="hero-subtitle slide-in-bottom delay-long"><?php echo esc_html($tagline); ?></p>
-        <button class="hero-cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
-          Book an Appointment
+        <button class="btn slide-in-bottom delay-long">
+          <a href="#contact">
+            Book an Appointment
+          </a>
         </button>
       </div>
       <div class="hero-image-wrapper">
