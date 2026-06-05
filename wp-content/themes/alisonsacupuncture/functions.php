@@ -32,6 +32,14 @@ add_action('wp_enqueue_scripts', function () {
     '1.0.0',
     true
   );
+
+  wp_enqueue_script(
+    'alisonsacupuncture-contact-appointment',
+    get_stylesheet_directory_uri() . '/assets/js/contact-appointment.js',
+    array(),
+    '1.0.0',
+    true
+  );
 });
 
 // ACF JSON save and load paths
@@ -55,4 +63,30 @@ add_action('after_setup_theme', function () {
   register_nav_menus(array(
     'menu-1' => esc_html__('Primary', 'alisonsacupuncture'),
   ));
+});
+
+// Register thank-you query var
+add_filter('query_vars', function ($vars) {
+  $vars[] = 'thank_you';
+  return $vars;
+});
+
+// Register /thank-you/ rewrite rule
+add_action('init', function () {
+  add_rewrite_rule('^thank-you/?$', 'index.php?thank_you=1', 'top');
+});
+
+// Handle thank-you page
+add_action('template_redirect', function () {
+  if (get_query_var('thank_you')) {
+    // Prevent search engines from indexing this page
+    add_filter('wp_robots', function ($robots) {
+      $robots['noindex'] = true;
+      $robots['nofollow'] = true;
+      return $robots;
+    });
+
+    include get_stylesheet_directory() . '/template-parts/thank-you.php';
+    exit;
+  }
 });

@@ -37,7 +37,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
+            "default_value": "info@alisonsacupuncture.com",
             "maxlength": "",
             "allow_in_bindings": 0,
             "placeholder": "Enter the full email address",
