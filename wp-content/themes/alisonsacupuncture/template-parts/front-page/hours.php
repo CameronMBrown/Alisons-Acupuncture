@@ -38,17 +38,9 @@ $hours_alt_txt = get_post_meta($img_id, '_wp_attachment_image_alt', true);
             $is_closed = is_string($hours_value) && strtolower(trim($hours_value)) === 'closed';
             ?>
             <tr class="<?php echo $is_closed ? 'closed' : ''; ?>"
-              data-day="<?php echo esc_attr($day_key); ?>"
-              data-hours="<?php echo esc_attr($hours_value); ?>">
+              data-day="<?php echo esc_attr($day_key); ?>">
               <th scope="row"><?php echo esc_html($day_label); ?></th>
               <td><?php echo esc_html($hours_value); ?></td>
-              <?php if (!$is_closed) : ?>
-                <td class="hours-book-cell">
-                  <button class="hours-book-btn" data-day-label="<?php echo esc_attr($day_label); ?>">
-                    <?php echo esc_html(sprintf('Book an appointment on %s', $day_label)); ?>
-                  </button>
-                </td>
-              <?php endif; ?>
             </tr>
           <?php endforeach; ?>
         </tbody>

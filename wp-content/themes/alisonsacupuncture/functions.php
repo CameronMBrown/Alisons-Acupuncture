@@ -4,6 +4,9 @@
  * Alison's Acupuncture Child Theme Functions
  */
 
+// SEO: LocalBusiness/MedicalBusiness schema, meta description, Open Graph (see inc/seo.php)
+require_once get_stylesheet_directory() . '/inc/seo.php';
+
 // Enqueue parent theme stylesheet
 add_action('wp_enqueue_scripts', function () {
   wp_enqueue_style('oceanwp-parent-style', get_template_directory_uri() . '/style.css');
@@ -66,8 +69,10 @@ function alisons_acf_json_load_point($paths)
   return $paths;
 }
 
-// Register navigation menus
+// Register navigation menus + let WordPress/Yoast manage the document <title>
 add_action('after_setup_theme', function () {
+  add_theme_support('title-tag');
+
   register_nav_menus(array(
     'menu-1' => esc_html__('Primary', 'alisonsacupuncture'),
   ));
@@ -98,3 +103,4 @@ add_action('template_redirect', function () {
     exit;
   }
 });
+

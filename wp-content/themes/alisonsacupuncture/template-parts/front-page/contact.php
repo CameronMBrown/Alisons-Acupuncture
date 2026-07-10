@@ -2,11 +2,28 @@
 
 /**
  * Front Page Contact Section
+ *
+ * Two toggleable panels:
+ *   - "Book Appointment" → ClinicSense booking widget (default active)
+ *   - "Contact"          → original message form (PRG + wp_mail)
+ *
+ * Note on the ClinicSense widget: a third-party script renders a "Book Now"
+ * button and opens its booking flow in a modal served cross-origin from
+ * clinicsense.com. That modal's internal appearance CANNOT be styled with our
+ * CSS. The only theming available is the widget's own `color` URL param (kept
+ * as `orange`, which matches the site accent --accent-color: #ff9d23). We style
+ * the surrounding wrapper/card and toggle buttons with brand colours instead.
  */
 
 $phone = get_field('phone_number');
 $email = get_field('email');
 $address = get_field('address');
+
+// Contact section content (ACF, with fallbacks)
+$contact_heading     = get_field('contact_heading') ?: 'Get in Touch';
+$contact_tab_label   = get_field('contact_tab_label') ?: 'Contact';
+$booking_tab_label   = get_field('booking_tab_label') ?: 'Book an Appointment';
+$booking_description = get_field('booking_description') ?: 'Pick a time that works for you — booking here syncs directly with Alison\'s calendar.';
 
 // Fallback if ACF email is empty
 if (empty($email)) {
@@ -109,6 +126,10 @@ if (isset($_POST['contact_submit'])) {
   wp_redirect($redirect_url);
   exit;
 }
+
+// Which panel is active on load. Default to booking; switch to the contact
+// form when a submission bounced back with a validation error.
+$active_panel = $has_error ? 'contact' : 'booking';
 ?>
 
 <section id="contact" class="contact-section">
@@ -120,7 +141,7 @@ if (isset($_POST['contact_submit'])) {
   </svg>
   <div class="cntr">
     <div class="contact-header slide-in-bottom">
-      <h2 class="text-3d-shadow">Get in Touch</h2>
+      <h2 class="text-3d-shadow"><?php echo esc_html($contact_heading); ?></h2>
       <div class="contact-meta">
         <?php if ($phone && $phone_href) : ?>
           <a href="tel:<?php echo esc_attr($phone_href); ?>" class="contact-meta-item" aria-label="Call us at <?php echo esc_attr($phone); ?>">
@@ -151,6 +172,31 @@ if (isset($_POST['contact_submit'])) {
           </a>
         <?php endif; ?>
       </div>
+
+      <?php if (! $has_success) : ?>
+        <div class="contact-toggle" role="tablist" aria-label="Choose how to get in touch">
+          <button
+            type="button"
+            class="contact-toggle-btn<?php echo $active_panel === 'booking' ? ' is-active' : ''; ?>"
+            role="tab"
+            id="contact-tab-booking"
+            aria-controls="contact-panel-booking"
+            aria-selected="<?php echo $active_panel === 'booking' ? 'true' : 'false'; ?>"
+            data-panel="booking">
+            <?php echo esc_html($booking_tab_label); ?>
+          </button>
+          <button
+            type="button"
+            class="contact-toggle-btn<?php echo $active_panel === 'contact' ? ' is-active' : ''; ?>"
+            role="tab"
+            id="contact-tab-contact"
+            aria-controls="contact-panel-contact"
+            aria-selected="<?php echo $active_panel === 'contact' ? 'true' : 'false'; ?>"
+            data-panel="contact">
+            <?php echo esc_html($contact_tab_label); ?>
+          </button>
+        </div>
+      <?php endif; ?>
     </div>
 
     <?php if ($has_success) : ?>
@@ -165,75 +211,103 @@ if (isset($_POST['contact_submit'])) {
       </div>
     <?php else : ?>
       <div class="contact-grid">
-        <div class="contact-form-wrapper slide-in-left">
-          <?php if ($has_error) : ?>
-            <div class="contact-form-status contact-error" role="alert">
-              <p>Something went wrong. Please try again or call directly.</p>
+        <div class="contact-panels slide-in-left">
+          <!-- Book Appointment panel (ClinicSense widget) -->
+          <div
+            class="contact-panel booking-widget-wrapper<?php echo $active_panel === 'booking' ? ' is-active' : ''; ?>"
+            id="contact-panel-booking"
+            role="tabpanel"
+            aria-labelledby="contact-tab-booking"
+            data-panel="booking">
+            <?php if ($booking_description) : ?>
+              <p class="booking-widget-intro"><?php echo esc_html($booking_description); ?></p>
+            <?php endif; ?>
+            <div class="booking-widget-buttons" id="book_now_buttons">
+              <?php // ClinicSense booking widget. Loaded via a plain <script src> with a
+              // hardcoded vendor URL — no document.write / unescape / eval, so there is no
+              // injectable surface and no inline JS that can leak as visible text. The
+              // widget injects its "Book Now" button here and opens its booking modal
+              // over the page. ?>
+              <script src="https://alisonsacupunctureanddryneedling.clinicsense.com/book_widget/?size=small&amp;color=orange" type="text/javascript"></script>
             </div>
-          <?php endif; ?>
+          </div>
 
-          <form id="contact-form" action="" method="post">
-            <div class="form-field">
-              <label for="contact-name">
-                Name <span class="required" aria-hidden="true">*</span>
-              </label>
-              <input
-                type="text"
-                id="contact-name"
-                name="contact_name"
-                required
-                aria-required="true"
-                autocomplete="name"
-                placeholder="Your name">
-            </div>
+          <!-- Contact panel (message form) -->
+          <div
+            class="contact-panel contact-form-wrapper<?php echo $active_panel === 'contact' ? ' is-active' : ''; ?>"
+            id="contact-panel-contact"
+            role="tabpanel"
+            aria-labelledby="contact-tab-contact"
+            data-panel="contact">
+            <?php if ($has_error) : ?>
+              <div class="contact-form-status contact-error" role="alert">
+                <p>Something went wrong. Please try again or call directly.</p>
+              </div>
+            <?php endif; ?>
 
-            <div class="form-field">
-              <label for="contact-email">
-                Email <span class="required" aria-hidden="true">*</span>
-              </label>
-              <input
-                type="email"
-                id="contact-email"
-                name="contact_email"
-                required
-                aria-required="true"
-                autocomplete="email"
-                placeholder="your@email.com">
-            </div>
+            <form id="contact-form" action="" method="post">
+              <div class="form-field">
+                <label for="contact-name">
+                  Name <span class="required" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="contact-name"
+                  name="contact_name"
+                  required
+                  aria-required="true"
+                  autocomplete="name"
+                  placeholder="Your name">
+              </div>
 
-            <div class="form-field">
-              <label for="contact-phone">Phone</label>
-              <input
-                type="tel"
-                id="contact-phone"
-                name="contact_phone"
-                autocomplete="tel"
-                placeholder="(123) 456-7890">
-            </div>
+              <div class="form-field">
+                <label for="contact-email">
+                  Email <span class="required" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="contact-email"
+                  name="contact_email"
+                  required
+                  aria-required="true"
+                  autocomplete="email"
+                  placeholder="your@email.com">
+              </div>
 
-            <div class="form-field">
-              <label for="contact-message">
-                Message <span class="required" aria-hidden="true">*</span>
-              </label>
-              <textarea
-                id="contact-message"
-                name="contact_message"
-                rows="5"
-                required
-                aria-required="true"
-                placeholder="How can we help you?"></textarea>
-            </div>
+              <div class="form-field">
+                <label for="contact-phone">Phone</label>
+                <input
+                  type="tel"
+                  id="contact-phone"
+                  name="contact_phone"
+                  autocomplete="tel"
+                  placeholder="(123) 456-7890">
+              </div>
 
-            <div class="form-field" style="display:none;" aria-hidden="true">
-              <label for="contact-website">Leave this empty</label>
-              <input type="text" id="contact-website" name="contact_website" tabindex="-1" autocomplete="off">
-            </div>
+              <div class="form-field">
+                <label for="contact-message">
+                  Message <span class="required" aria-hidden="true">*</span>
+                </label>
+                <textarea
+                  id="contact-message"
+                  name="contact_message"
+                  rows="5"
+                  required
+                  aria-required="true"
+                  placeholder="How can we help you?"></textarea>
+              </div>
 
-            <?php wp_nonce_field('contact_form', '_wpnonce'); ?>
-            <input type="hidden" name="contact_submit" value="1">
+              <div class="form-field" style="display:none;" aria-hidden="true">
+                <label for="contact-website">Leave this empty</label>
+                <input type="text" id="contact-website" name="contact_website" tabindex="-1" autocomplete="off">
+              </div>
 
-            <button type="submit" class="btn btn-accent">Send Message</button>
-          </form>
+              <?php wp_nonce_field('contact_form', '_wpnonce'); ?>
+              <input type="hidden" name="contact_submit" value="1">
+
+              <button type="submit" class="btn btn-accent">Send Message</button>
+            </form>
+          </div>
         </div>
 
         <div class="contact-map-wrapper slide-in-right">

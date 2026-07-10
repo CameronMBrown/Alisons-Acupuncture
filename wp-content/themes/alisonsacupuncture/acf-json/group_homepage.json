@@ -113,7 +113,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "Healing Through Traditional Chinese Medicine",
+                    "default_value": "Acupuncture & Dry Needling in Cobourg — Healing Through Traditional Chinese Medicine",
                     "maxlength": "",
                     "allow_in_bindings": 1,
                     "placeholder": "Enter a short introduction or tagline",
@@ -179,7 +179,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "About Alison",
+            "default_value": "About Alison — Your Cobourg Acupuncturist & RPN",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
@@ -487,7 +487,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
+            "default_value": "Acupuncture & Wellness Services in Cobourg",
             "maxlength": "",
             "allow_in_bindings": 0,
             "placeholder": "",
@@ -1439,6 +1439,108 @@
                     "preview_size": "medium"
                 }
             ]
+        },
+        {
+            "key": "field_6a2c0f1a0c001",
+            "label": "Contact Section",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_6a2c0f1a0c002",
+            "label": "Contact Heading",
+            "name": "contact_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Heading shown above the contact section toggle.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Get in Touch",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6a2c0f1a0c005",
+            "label": "Book Appointment Description",
+            "name": "booking_description",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Intro text shown above the online booking widget.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Pick a time that works for you — booking here syncs directly with Alison's calendar.",
+            "maxlength": "",
+            "rows": 3,
+            "placeholder": "",
+            "new_lines": "",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_6a2c0f1a0c003",
+            "label": "Book Appointment Button Label",
+            "name": "booking_tab_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Text for the button that shows the online booking widget.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Book an Appointment",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6a2c0f1a0c004",
+            "label": "Contact Button Label",
+            "name": "contact_tab_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Text for the button that shows the contact form.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Contact",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -1462,5 +1564,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1780412152
+    "modified": 1783800000
 }

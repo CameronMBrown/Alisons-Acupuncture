@@ -1,5 +1,6 @@
 @use "../../variables";
 @use "contact-form";
+@use "booking";
 
 .contact-section {
   background-color: variables.$primary-color;
@@ -53,6 +54,59 @@
   }
 }
 
+/* ---- Contact / Booking Toggle ---- */
+
+.contact-toggle {
+  display: inline-flex;
+  gap: 0.25rem;
+  margin-top: 2rem;
+  padding: 0.35rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-toggle-btn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.6rem 1.75rem;
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  &.is-active {
+    background: variables.$accent-color;
+    color: #fff;
+  }
+
+  &:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+  }
+}
+
+/* ---- Panels ---- */
+
+.contact-panel {
+  display: none;
+
+  &.is-active {
+    display: block;
+  }
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -85,5 +139,16 @@
     font-size: 1.2rem;
     flex-direction: column;
     align-items: center;
+  }
+
+  .contact-toggle {
+    display: flex;
+    width: 100%;
+  }
+
+  .contact-toggle-btn {
+    flex: 1;
+    padding: 0.6rem 0.75rem;
+    font-size: 1.3rem;
   }
 }

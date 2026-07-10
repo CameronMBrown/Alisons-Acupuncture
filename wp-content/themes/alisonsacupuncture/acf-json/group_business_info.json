@@ -84,6 +84,69 @@
             "append": ""
         },
         {
+            "key": "field_6a118d001a01a",
+            "label": "Postal Code",
+            "name": "postal_code",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Used for local SEO / map schema.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "K9A 3R3",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "e.g. K9A 3R3",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6a118d002a02a",
+            "label": "Latitude",
+            "name": "latitude",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Map coordinate for local SEO schema. Find it via Google Maps (right-click the location).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "43.971575",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "e.g. 43.971575",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6a118d003a03a",
+            "label": "Longitude",
+            "name": "longitude",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Map coordinate for local SEO schema. Find it via Google Maps (right-click the location).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "-78.170566",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "e.g. -78.170566",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_6a22ddd26e77a",
             "label": "Socials",
             "name": "",
@@ -157,5 +220,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1780669968
+    "modified": 1783000000
 }

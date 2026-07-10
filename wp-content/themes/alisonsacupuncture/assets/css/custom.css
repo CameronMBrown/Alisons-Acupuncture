@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ----------------------------------------------- */
 /* ----------------------------------------------- */
 /* ----------------------------------------------- */
@@ -618,7 +619,6 @@ body:has(#wpadminbar) .site {
   color: #3d3224;
 }
 .hours-table tr {
-  position: relative;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 .hours-table tr.closed {
@@ -626,41 +626,6 @@ body:has(#wpadminbar) .site {
 }
 .hours-table tr:last-child {
   border-bottom: 0;
-}
-.hours-table .hours-book-cell {
-  width: 0;
-  padding: 0;
-  border: 0;
-  overflow: visible;
-}
-
-.hours-book-btn {
-  display: none;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  z-index: 1;
-  padding: 0.35rem 0.75rem;
-  border: none;
-  border-radius: 4px;
-  background-color: #ff9d23;
-  color: #fff;
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.2s ease;
-  transform: translate(0%, -50%);
-  margin: 0 1rem;
-}
-.hours-book-btn:hover {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) brightness(0.9);
-}
-
-tr:hover .hours-book-btn,
-tr:focus-within .hours-book-btn {
-  display: block;
 }
 
 .hours-section {
@@ -1169,6 +1134,106 @@ tr:focus-within .hours-book-btn {
   width: 100%;
 }
 
+/* ---- Booking widget (ClinicSense) ---- */
+/* The widget renders a "Book Now" button and opens its own booking modal over
+   the page. That modal is served cross-origin, so its interior cannot be
+   styled from here — we only brand the surrounding card and the button. */
+.booking-widget-wrapper {
+  padding: 2rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.booking-widget-intro {
+  margin: 0 0 1.5rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+.booking-widget-buttons {
+  width: 100%;
+  /* Defensive: the <script> tag is display:none by default, but guarantee no
+     widget markup ever leaks as visible text. */
+}
+.booking-widget-buttons script {
+  display: none;
+}
+.booking-widget-buttons {
+  /* The ClinicSense button is just a background image on `a > div`, so it can't
+     be sized or recoloured directly. We stretch the anchor to full width, strip
+     the vendor image, and paint our own full-width orange button with `::after`.
+     The overlay is `pointer-events: none` so the click still reaches the
+     vendor element underneath that opens the booking modal. */
+}
+.booking-widget-buttons span,
+.booking-widget-buttons a {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block;
+  box-sizing: border-box;
+}
+.booking-widget-buttons a {
+  position: relative;
+  text-decoration: none;
+}
+.booking-widget-buttons {
+  /* Vendor image button: hide the image but keep it filling the anchor so the
+     clickable area matches our painted button. */
+}
+.booking-widget-buttons a > div {
+  background: none !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 3.25rem;
+}
+.booking-widget-buttons {
+  /* Our full-width orange button surface + label. */
+}
+.booking-widget-buttons a::after {
+  content: "Book Now";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: #ff9d23;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.2;
+  pointer-events: none;
+  transition: filter 0.2s ease;
+}
+.booking-widget-buttons a:hover::after {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) brightness(0.9);
+}
+
+/* ---- ClinicSense booking modal ---- */
+/* The widget's overlay is a <div class="patient-cal-book-frame_{hash}">
+   appended to <body>. On the FIRST open the vendor sets `left: 0` (an inline
+   style, computed before the frame has measured itself while still
+   display:none), so the modal lands in the top-left corner; on later opens the
+   cached dimensions let it center. The vendor's inline styles carry no
+   `!important`, so an `!important` centered override wins on every open,
+   including the first. The class hash is per-instance, hence the prefix match. */
+[class*=patient-cal-book-frame] {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  margin: 0 !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+@media (max-width: 480px) {
+  .booking-widget-wrapper {
+    padding: 1.25rem;
+  }
+}
 .contact-section {
   background-color: #5b7e3c;
   color: #fff;
@@ -1217,6 +1282,51 @@ tr:focus-within .hours-book-btn {
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) brightness(0.9);
 }
 
+/* ---- Contact / Booking Toggle ---- */
+.contact-toggle {
+  display: inline-flex;
+  gap: 0.25rem;
+  margin-top: 2rem;
+  padding: 0.35rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-toggle-btn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.6rem 1.75rem;
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+.contact-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+.contact-toggle-btn.is-active {
+  background: #ff9d23;
+  color: #fff;
+}
+.contact-toggle-btn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ---- Panels ---- */
+.contact-panel {
+  display: none;
+}
+.contact-panel.is-active {
+  display: block;
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1244,6 +1354,15 @@ tr:focus-within .hours-book-btn {
     font-size: 1.2rem;
     flex-direction: column;
     align-items: center;
+  }
+  .contact-toggle {
+    display: flex;
+    width: 100%;
+  }
+  .contact-toggle-btn {
+    flex: 1;
+    padding: 0.6rem 0.75rem;
+    font-size: 1.3rem;
   }
 }
 .error-404-section {
