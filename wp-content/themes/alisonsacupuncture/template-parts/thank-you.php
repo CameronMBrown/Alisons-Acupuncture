@@ -38,7 +38,7 @@ $name     = isset($_GET['name']) ? sanitize_text_field(wp_unslash($_GET['name'])
       <div class="cntr">
         <div class="error-404-content">
           <h1 class="hero-title text-3d-shadow slide-in-bottom">
-            Appointment Requested
+            Email Sent
           </h1>
           <p class="hero-subtitle slide-in-bottom delay-short">
             <?php if ($name) : ?>

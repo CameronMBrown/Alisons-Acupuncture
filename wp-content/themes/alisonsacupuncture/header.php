@@ -19,8 +19,7 @@ if ($phone_number) {
   <meta charset="<?php bloginfo('charset'); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/img/alisonsacupuncture-logo-sm.png'); ?>" type="image">
-  <title>Alison's Acupuncture</title>
-  <?php wp_head(); ?>
+  <?php wp_head(); // outputs the <title>, meta description, Open Graph and JSON-LD schema (via Yoast) ?>
 </head>
 
 <body <?php body_class(); ?>>

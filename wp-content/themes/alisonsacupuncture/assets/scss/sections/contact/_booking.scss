@@ -1,0 +1,103 @@
+@use "../../variables";
+
+/* ---- Booking widget (ClinicSense) ---- */
+/* The widget renders a "Book Now" button and opens its own booking modal over
+   the page. That modal is served cross-origin, so its interior cannot be
+   styled from here — we only brand the surrounding card and the button. */
+
+.booking-widget-wrapper {
+  padding: 2rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.booking-widget-intro {
+  margin: 0 0 1.5rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+.booking-widget-buttons {
+  width: 100%;
+
+  /* Defensive: the <script> tag is display:none by default, but guarantee no
+     widget markup ever leaks as visible text. */
+  script {
+    display: none;
+  }
+
+  /* The ClinicSense button is just a background image on `a > div`, so it can't
+     be sized or recoloured directly. We stretch the anchor to full width, strip
+     the vendor image, and paint our own full-width orange button with `::after`.
+     The overlay is `pointer-events: none` so the click still reaches the
+     vendor element underneath that opens the booking modal. */
+  span,
+  a {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  a {
+    position: relative;
+    text-decoration: none;
+  }
+
+  /* Vendor image button: hide the image but keep it filling the anchor so the
+     clickable area matches our painted button. */
+  a > div {
+    background: none !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 3.25rem;
+  }
+
+  /* Our full-width orange button surface + label. */
+  a::after {
+    content: "Book Now";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: variables.$accent-color;
+    color: #fff;
+    font-family: inherit;
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1.2;
+    pointer-events: none;
+    transition: filter 0.2s ease;
+  }
+
+  a:hover::after {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) brightness(0.9);
+  }
+}
+
+/* ---- ClinicSense booking modal ---- */
+/* The widget's overlay is a <div class="patient-cal-book-frame_{hash}">
+   appended to <body>. On the FIRST open the vendor sets `left: 0` (an inline
+   style, computed before the frame has measured itself while still
+   display:none), so the modal lands in the top-left corner; on later opens the
+   cached dimensions let it center. The vendor's inline styles carry no
+   `!important`, so an `!important` centered override wins on every open,
+   including the first. The class hash is per-instance, hence the prefix match. */
+[class*="patient-cal-book-frame"] {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  margin: 0 !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+@media (max-width: variables.$bp-small) {
+  .booking-widget-wrapper {
+    padding: 1.25rem;
+  }
+}
