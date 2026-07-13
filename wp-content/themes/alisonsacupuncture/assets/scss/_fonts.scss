@@ -1,0 +1,45 @@
+// ============================================================
+// Self-hosted heading typeface — Fraunces (Latin subset, WOFF2)
+// ============================================================
+// A warm, soft old-style serif used for HEADINGS ONLY. Body copy stays on the
+// zero-request system sans stack (see $body-font). Only two weights are shipped
+// (500, 600), Latin-subset WOFF2, ~18KB each (~36KB total).
+//
+// Performance:
+//  - `font-display: swap` → text paints instantly in the fallback, never blocks
+//    render (protects FCP/LCP).
+//  - The heading weight is <link rel="preload">-ed in header.php so it arrives
+//    early without being render-blocking.
+//  - The "Fraunces Fallback" face below re-shapes Georgia to match Fraunces's
+//    metrics (size-adjust + ascent/descent overrides derived from the real font)
+//    so the swap causes almost no layout shift (protects CLS).
+
+$font-path: "../fonts";
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("#{$font-path}/fraunces-latin-500-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("#{$font-path}/fraunces-latin-600-normal.woff2") format("woff2");
+}
+
+// Metric-matched fallback: Georgia re-scaled to Fraunces's proportions so the
+// swap-in shift is minimal. Numbers computed from the shipped Fraunces metrics
+// (see /docs/design-system/typography.md).
+@font-face {
+  font-family: "Fraunces Fallback";
+  src: local("Georgia"), local("Times New Roman");
+  size-adjust: 102.6%;
+  ascent-override: 95.3%;
+  descent-override: 24.9%;
+  line-gap-override: 0%;
+}

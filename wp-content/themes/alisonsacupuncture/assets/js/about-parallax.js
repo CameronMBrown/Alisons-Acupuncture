@@ -1,4 +1,11 @@
 ;(function () {
+  // Respect the user's OS "reduce motion" setting — skip parallax entirely.
+  if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  )
+    return
+
   var MAX_TRANSLATE = 300
 
   var section = document.getElementById("about")

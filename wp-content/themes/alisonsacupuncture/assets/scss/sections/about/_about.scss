@@ -43,16 +43,18 @@
 }
 
 .about-section h2 {
-  font-size: 4rem;
+  font-size: var(--fs-h2);
   color: variables.$primary-color;
   margin-bottom: 1rem;
 }
 
 .about-section p {
-  color: #555;
+  // Long-form copy: regular weight + roomy line-height reads far easier for
+  // low-vision users than the previous bold. Kept dark enough for AA on white.
+  color: #444;
   line-height: 1.4;
-  font-size: 1.6rem;
-  font-weight: 700;
+  font-size: var(--fs-lg);
+  font-weight: 400;
 }
 
 .about-image {

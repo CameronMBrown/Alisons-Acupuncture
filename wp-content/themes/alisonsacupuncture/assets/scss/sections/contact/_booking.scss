@@ -3,14 +3,9 @@
 /* ---- Booking widget (ClinicSense) ---- */
 /* The widget renders a "Book Now" button and opens its own booking modal over
    the page. That modal is served cross-origin, so its interior cannot be
-   styled from here — we only brand the surrounding card and the button. */
-
-.booking-widget-wrapper {
-  padding: 2rem;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-}
+   styled from here — we only brand the surrounding card and the button.
+   The card surface itself comes from the shared `.glass-card` class (see
+   components/_glass-card.scss), applied alongside `.booking-widget-wrapper`. */
 
 .booking-widget-intro {
   margin: 0 0 1.5rem;
@@ -64,7 +59,7 @@
     justify-content: center;
     border-radius: 8px;
     background-color: variables.$accent-color;
-    color: #fff;
+    color: variables.$secondary-color; // dark text for AA on the accent fill
     font-family: inherit;
     font-size: 1.6rem;
     font-weight: 600;
@@ -96,8 +91,3 @@
   transform: translate(-50%, -50%) !important;
 }
 
-@media (max-width: variables.$bp-small) {
-  .booking-widget-wrapper {
-    padding: 1.25rem;
-  }
-}

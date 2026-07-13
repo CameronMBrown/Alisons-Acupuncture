@@ -6,13 +6,61 @@
 /* ----------------------------------------------- */
 /* ----------------------------------------------- */
 :root {
+  /* ---- Colour ---- */
   --primary-color: #5b7e3c;
   --secondary-color: #3d3224;
-  --accent-color: #ff9d23;
+  --accent-color: #f8a946;
+  --accent-strong: #a85906;
+  --alternate-color: #ffd65a;
   --text-color: #333;
   --text-light: #f9f7f4;
   --light-bg: #f9f7f4;
   --border-color: #e0ddd9;
+  /* ---- Typography ---- */
+  --heading-font: Fraunces, Fraunces Fallback, Georgia, Times New Roman, serif;
+  --body-font: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+  /* Fluid type scale — clamp(min, preferred+vw, max). Mins are tuned up for an
+     older / low-vision audience; maxes let text GROW on large/ultrawide screens.
+     NOTE: the OceanWP parent sets `html { font-size: 62.5% }`, so on this site
+     1rem = 10px (NOT 16px). These rem values are calibrated for that 10px root;
+     the px targets in the comments are what actually renders. (The `vw` term is
+     root-independent, so it carries the same px slope regardless.) */
+  /* Floor of the scale — flat at the accessibility floor (never go below this;
+     matches --fs-small's minimum) for compact/secondary text in tight layouts
+     (e.g. the service-card back copy at 3–4 columns). Deliberately NOT fluid:
+     it needs to read as clearly smaller than --fs-small across its whole
+     bracket, not converge with it at some viewport widths. */
+  --fs-xs: 1.6rem; /* 16px flat */
+  --fs-small: clamp(1.6rem, 1.52rem + 0.25vw, 1.84rem); /* 16 → 18.4px  (was 0.85rem) */
+  --fs-body: clamp(1.84rem, 1.68rem + 0.5vw, 2.24rem); /* 18.4 → 22.4px */
+  --fs-lg: clamp(2.08rem, 1.84rem + 0.8vw, 2.72rem); /* 20.8 → 27.2px  lead / emphasised body */
+  --fs-h3: clamp(2.56rem, 2.08rem + 1.5vw, 4.16rem); /* 25.6 → 41.6px */
+  --fs-h2: clamp(3.84rem, 2.88rem + 3vw, 5.6rem); /* 38.4 → 56px  section headings (was 4rem) */
+  --fs-display: clamp(4.16rem, 2.4rem + 5vw, 8rem); /* 41.6 → 80px  large hero-scale display */
+  /* ---- Spacing scale ---- */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 4rem;
+  --space-7: 6rem;
+  --space-8: 8rem;
+  /* ---- Radius scale ---- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+  /* ---- Elevation ---- */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  /* ---- Motion ---- */
+  --dur-fast: 0.2s;
+  --dur-base: 0.3s;
+  --dur-slow: 0.6s;
+  --ease: ease;
 }
 
 * {
@@ -25,10 +73,20 @@ html {
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: var(--fs-body);
   color: #333;
   line-height: 1.6;
   padding-top: 80px;
   overflow: hidden;
+}
+
+.site h1,
+.site h2,
+.site h3,
+.site h4,
+.site h5,
+.site h6 {
+  font-family: var(--heading-font);
 }
 
 .cntr {
@@ -54,6 +112,28 @@ body {
   text-shadow: 1px 1px 1px black;
 }
 
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/fraunces-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/fraunces-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces Fallback";
+  src: local("Georgia"), local("Times New Roman");
+  size-adjust: 102.6%;
+  ascent-override: 95.3%;
+  descent-override: 24.9%;
+  line-gap-override: 0%;
+}
 @keyframes rotate-360 {
   from {
     transform: rotate(0deg);
@@ -246,7 +326,7 @@ body:has(#wpadminbar) .site {
   position: absolute;
   width: 100px;
   height: 100px;
-  border: 2px solid #ff9d23;
+  border: 2px solid #f8a946;
   border-radius: 0;
   opacity: 0.3;
 }
@@ -279,19 +359,21 @@ body:has(#wpadminbar) .site {
   text-align: left;
 }
 .hero-text .hero-greeting {
-  font-size: 12rem;
-  font-weight: 900;
+  font-family: var(--heading-font);
+  font-size: calc(var(--fs-display) * 1.5);
+  font-weight: 600;
   opacity: 0.5;
   color: transparent;
-  background: linear-gradient(to top, rgba(255, 156, 35, 0.1019607843) 0%, #ff9d23 50%);
+  background: linear-gradient(to top, rgba(255, 156, 35, 0.1019607843) 0%, #f8a946 50%);
   -webkit-background-clip: text;
   background-clip: text;
   margin: 0 0 -7rem -2rem;
   z-index: -1;
 }
 .hero-text .hero-title {
-  font-size: 8rem;
-  font-weight: 700;
+  font-family: var(--heading-font);
+  font-size: var(--fs-display);
+  font-weight: 600;
   color: #5b7e3c;
   margin: 0 0 0.5rem 0;
   letter-spacing: -0.03em;
@@ -299,17 +381,17 @@ body:has(#wpadminbar) .site {
   filter: drop-shadow(0 0 5px #f9f7f4);
 }
 .hero-text .hero-subtitle {
-  font-size: 1.4rem;
+  font-size: var(--fs-lg);
   color: #3d3224;
   margin: 0.8rem 0 2rem 0;
   font-weight: 500;
-  max-width: 500px;
-  line-height: 125%;
+  line-height: 1.4;
 }
 .hero-text .hero-title--accent {
   display: inline-block;
-  font-size: 3rem;
-  font-weight: 600;
+  font-family: var(--heading-font);
+  font-size: var(--fs-h3);
+  font-weight: 500;
   letter-spacing: 1.1px;
   color: #3d3224;
   text-shadow: none;
@@ -317,23 +399,12 @@ body:has(#wpadminbar) .site {
 
 @media (max-width: 1200px) {
   .hero-text .hero-greeting {
-    font-size: 8rem;
     margin: 0 0 -4.2rem -1.5rem;
-  }
-  .hero-text .hero-title {
-    font-size: 5rem;
-  }
-  .hero-text .hero-title--accent {
-    font-size: 2.4rem;
   }
 }
 @media (max-width: 992px) {
   .hero-text .hero-greeting {
-    font-size: 6rem;
     margin: 0 0 -3rem -1.5rem;
-  }
-  .hero-text .hero-title {
-    font-size: 4rem;
   }
 }
 @media (max-width: 768px) {
@@ -341,33 +412,7 @@ body:has(#wpadminbar) .site {
     text-align: center;
   }
   .hero-text .hero-greeting {
-    font-size: 4.5rem;
     transform: translateX(-20%);
-  }
-  .hero-text .hero-title {
-    font-size: 4.2rem;
-  }
-  .hero-text .hero-title--accent {
-    font-size: 2rem;
-  }
-  .hero-text .hero-subtitle {
-    font-size: 1.4rem;
-  }
-}
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.5rem;
-  }
-  .hero-tagline {
-    font-size: 1.2rem;
-  }
-}
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: 2rem;
-  }
-  .hero-tagline {
-    font-size: 1rem;
   }
 }
 .trees-background-container {
@@ -503,29 +548,6 @@ body:has(#wpadminbar) .site {
   z-index: 2;
 }
 
-.hero-cta-btn {
-  display: inline-block;
-  background-color: #5b7e3c;
-  color: white;
-  padding: 1rem 2.5rem;
-  font-size: 1.4rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(45, 80, 22, 0.2);
-  text-decoration: none;
-}
-.hero-cta-btn:hover {
-  background-color: #1f3810;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(45, 80, 22, 0.3);
-}
-.hero-cta-btn:active {
-  transform: translateY(-1px);
-}
-
 .hero-image-wrapper {
   flex: 1;
   position: relative;
@@ -558,7 +580,7 @@ body:has(#wpadminbar) .site {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border: 3px solid #ff9d23;
+  border: 3px solid #f8a946;
   box-shadow: 0 12px 40px rgba(45, 80, 22, 0.2), inset 0 0 30px rgba(255, 255, 255, 0.1);
 }
 
@@ -612,8 +634,9 @@ body:has(#wpadminbar) .site {
   padding: 1rem 1.25rem;
   text-align: left;
   color: #5b7e3c;
-  font-size: 1.4rem;
+  font-size: var(--fs-body);
   font-weight: 700;
+  line-height: 130%;
 }
 .hours-table td {
   color: #3d3224;
@@ -663,13 +686,13 @@ body:has(#wpadminbar) .site {
   margin: 0 auto;
 }
 .hours-layout .hours-content {
-  max-width: 800px;
+  max-width: 900px;
   padding: 0 2rem;
   width: 100%;
   max-width: 80%;
 }
 .hours-layout h2 {
-  font-size: 4rem;
+  font-size: var(--fs-h2);
   margin-bottom: 2rem;
   color: #f9f7f4;
 }
@@ -683,7 +706,6 @@ body:has(#wpadminbar) .site {
   min-width: 300px;
   max-width: 1000px;
   flex-grow: 1;
-  max-height: 600px;
 }
 .hours-image img {
   width: 100%;
@@ -695,9 +717,11 @@ body:has(#wpadminbar) .site {
 
 .hours-note {
   color: #f9f7f4;
-  font-size: 1rem;
+  font-size: var(--fs-small);
+  font-weight: 500;
   font-style: italic;
   margin-bottom: 0.2rem;
+  line-height: 120%;
 }
 
 @media (min-width: 2000px) {
@@ -790,16 +814,16 @@ body:has(#wpadminbar) .site {
 }
 
 .about-section h2 {
-  font-size: 4rem;
+  font-size: var(--fs-h2);
   color: #5b7e3c;
   margin-bottom: 1rem;
 }
 
 .about-section p {
-  color: #555;
+  color: #444;
   line-height: 1.4;
-  font-size: 1.6rem;
-  font-weight: 700;
+  font-size: var(--fs-lg);
+  font-weight: 400;
 }
 
 .about-image {
@@ -842,7 +866,7 @@ body:has(#wpadminbar) .site {
 
 .testimonials-section h3 {
   text-align: center;
-  font-size: 1.8rem;
+  font-size: var(--fs-h3);
   color: #5b7e3c;
   margin-bottom: 2rem;
 }
@@ -857,12 +881,14 @@ body:has(#wpadminbar) .site {
   background: #f9f7f4;
   padding: 1.5rem;
   border-radius: 8px;
-  border-left: 4px solid #ff9d23;
+  border-left: 4px solid #f8a946;
 }
 
 .testimonial-text {
   font-style: italic;
-  color: #666;
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: #555;
   margin-bottom: 1rem;
 }
 
@@ -879,7 +905,7 @@ body:has(#wpadminbar) .site {
 
 .services-section h2 {
   text-align: center;
-  font-size: 4rem;
+  font-size: var(--fs-h2);
   color: #5b7e3c;
   margin-bottom: 2rem;
 }
@@ -998,9 +1024,14 @@ body:has(#wpadminbar) .site {
   position: relative;
   z-index: 2;
   color: #f9f7f4;
-  font-size: 2.4rem;
+  font-size: var(--fs-h3);
   text-align: center;
   margin: 0;
+}
+@media (min-width: 992px) {
+  .service-card-front h3 {
+    font-size: var(--fs-lg);
+  }
 }
 
 .service-card-back {
@@ -1019,10 +1050,20 @@ body:has(#wpadminbar) .site {
   position: relative;
   z-index: 1;
   color: #f9f7f4;
-  font-size: 1.3rem;
-  line-height: 1.6;
+  line-height: 1.35;
   text-align: center;
   margin: 0;
+  font-size: var(--fs-xs);
+}
+@media (max-width: 992px) {
+  .service-card-back p {
+    font-size: var(--fs-small);
+  }
+}
+@media (max-width: 768px) {
+  .service-card-back p {
+    font-size: var(--fs-body);
+  }
 }
 
 @media (min-width: 2000px) {
@@ -1049,7 +1090,7 @@ body:has(#wpadminbar) .site {
 
 .contact-error {
   background: rgba(255, 157, 35, 0.15);
-  border: 2px solid #ff9d23;
+  border: 2px solid #f8a946;
   margin-bottom: 1.5rem;
 }
 .contact-error p {
@@ -1071,7 +1112,7 @@ body:has(#wpadminbar) .site {
   line-height: 1.4;
 }
 .contact-form-wrapper .form-field label .required {
-  color: #ff9d23;
+  color: #f8a946;
   font-size: 2rem;
   margin-bottom: -0.2rem;
   top: unset;
@@ -1096,7 +1137,7 @@ body:has(#wpadminbar) .site {
 .contact-form-wrapper .form-field input:focus,
 .contact-form-wrapper .form-field textarea:focus {
   outline: none;
-  border-color: #ff9d23;
+  border-color: #f8a946;
 }
 .contact-form-wrapper .form-field input:invalid,
 .contact-form-wrapper .form-field textarea:invalid {
@@ -1121,7 +1162,6 @@ body:has(#wpadminbar) .site {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 3rem;
 }
 .contact-map-wrapper .map-container {
   border-radius: 12px;
@@ -1137,14 +1177,9 @@ body:has(#wpadminbar) .site {
 /* ---- Booking widget (ClinicSense) ---- */
 /* The widget renders a "Book Now" button and opens its own booking modal over
    the page. That modal is served cross-origin, so its interior cannot be
-   styled from here — we only brand the surrounding card and the button. */
-.booking-widget-wrapper {
-  padding: 2rem;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-}
-
+   styled from here — we only brand the surrounding card and the button.
+   The card surface itself comes from the shared `.glass-card` class (see
+   components/_glass-card.scss), applied alongside `.booking-widget-wrapper`. */
 .booking-widget-intro {
   margin: 0 0 1.5rem;
   font-size: 1.5rem;
@@ -1198,8 +1233,8 @@ body:has(#wpadminbar) .site {
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  background-color: #ff9d23;
-  color: #fff;
+  background-color: #f8a946;
+  color: #3d3224;
   font-family: inherit;
   font-size: 1.6rem;
   font-weight: 600;
@@ -1229,11 +1264,6 @@ body:has(#wpadminbar) .site {
   transform: translate(-50%, -50%) !important;
 }
 
-@media (max-width: 480px) {
-  .booking-widget-wrapper {
-    padding: 1.25rem;
-  }
-}
 .contact-section {
   background-color: #5b7e3c;
   color: #fff;
@@ -1246,8 +1276,8 @@ body:has(#wpadminbar) .site {
   margin-bottom: 2rem;
 }
 .contact-header h2 {
-  font-size: 4rem;
-  color: #ff9d23;
+  font-size: var(--fs-h2);
+  color: #f8a946;
   margin-bottom: 1.5rem;
 }
 
@@ -1311,8 +1341,8 @@ body:has(#wpadminbar) .site {
   background: rgba(255, 255, 255, 0.15);
 }
 .contact-toggle-btn.is-active {
-  background: #ff9d23;
-  color: #fff;
+  background: #f8a946;
+  color: #3d3224;
 }
 .contact-toggle-btn:focus-visible {
   outline: 3px solid #fff;
@@ -1351,7 +1381,7 @@ body:has(#wpadminbar) .site {
     padding: 3rem 0;
   }
   .contact-meta {
-    font-size: 1.2rem;
+    font-size: var(--fs-sm);
     flex-direction: column;
     align-items: center;
   }
@@ -1479,7 +1509,7 @@ body:has(#wpadminbar) .site {
 }
 .footer-bottom p {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: var(--fs-small);
   color: #333;
   line-height: 1.6;
 }
@@ -1489,7 +1519,7 @@ body:has(#wpadminbar) .site {
 }
 
 .footer-credit {
-  opacity: 0.5;
+  opacity: 0.7;
 }
 .footer-credit a {
   color: #333;
@@ -1544,7 +1574,7 @@ body:has(#wpadminbar) .site {
   outline: none;
 }
 .btn:focus-visible {
-  outline: 3px solid #ff9d23;
+  outline: 3px solid #f8a946;
   outline-offset: 2px;
 }
 .btn:visited {
@@ -1559,38 +1589,38 @@ body:has(#wpadminbar) .site {
 
 .btn-accent,
 form .btn-accent[type=submit] {
-  background-color: #ff9d23;
-  color: #fff;
+  background-color: #f8a946;
+  color: #3d3224;
   border: none;
 }
 .btn-accent:hover,
 form .btn-accent[type=submit]:hover {
-  color: #fff;
-  background-color: #ff9d23;
+  color: #3d3224;
+  background-color: #f8a946;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) brightness(0.9);
 }
 .btn-accent:active,
 form .btn-accent[type=submit]:active {
-  color: #fff;
-  background-color: #ff9d23;
+  color: #3d3224;
+  background-color: #f8a946;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) brightness(0.75);
 }
 .btn-accent:focus,
 form .btn-accent[type=submit]:focus {
-  color: #fff;
-  background-color: #ff9d23;
+  color: #3d3224;
+  background-color: #f8a946;
   filter: brightness(0.85);
   outline: none;
 }
 .btn-accent:focus-visible,
 form .btn-accent[type=submit]:focus-visible {
-  color: #fff;
+  color: #3d3224;
   outline: 3px solid #3d3224;
   outline-offset: 2px;
 }
 .btn-accent:visited,
 form .btn-accent[type=submit]:visited {
-  color: #fff;
+  color: #3d3224;
 }
 
 .site-header {
@@ -1704,10 +1734,10 @@ form .btn-accent[type=submit]:visited {
   width: auto;
 }
 .main-navigation .nav-phone-link {
-  color: #ff9d23;
+  color: #a85906;
   text-decoration: none;
   font-size: 1.8rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0.5rem 1rem;
   transition: all 0.2s ease;
 }
@@ -1723,7 +1753,7 @@ form .btn-accent[type=submit]:visited {
 }
 @media (max-width: 768px) {
   .main-navigation .call-now-mobile {
-    background-color: #ff9d23;
+    background-color: #f8a946;
     color: white !important;
     justify-content: center;
     font-weight: 700;
@@ -1785,4 +1815,52 @@ form .btn-accent[type=submit]:visited {
   bottom: -60px;
   right: -40px;
   animation: blob-drift-1 8s ease-in-out infinite;
+}
+
+.glass-card {
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+@media (max-width: 480px) {
+  .glass-card {
+    padding: 1.25rem;
+  }
+}
+
+/* Accessibility guardrails — kept last so its reduced-motion overrides win */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .fade-in,
+  .slide-in-left,
+  .slide-in-right,
+  .slide-in-bottom,
+  .slide-in-top {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  .hero-accent-wrapper,
+  .hero-accent,
+  #hero-accent-1,
+  #hero-accent-2,
+  #hero-accent-3,
+  .blob-svg,
+  .blob-svg--top-left,
+  .blob-svg--bottom-right {
+    animation: none !important;
+  }
+  .service-card-inner {
+    transition: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
 }
