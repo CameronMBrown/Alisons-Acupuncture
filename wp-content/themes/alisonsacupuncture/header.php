@@ -19,6 +19,8 @@ if ($phone_number) {
   <meta charset="<?php bloginfo('charset'); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/img/alisonsacupuncture-logo-sm.png'); ?>" type="image">
+  <?php // Preload the above-the-fold heading weight so the serif swaps in fast (non-render-blocking). ?>
+  <link rel="preload" href="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/fonts/fraunces-latin-600-normal.woff2'); ?>" as="font" type="font/woff2" crossorigin>
   <?php wp_head(); // outputs the <title>, meta description, Open Graph and JSON-LD schema (via Yoast) ?>
 </head>
 

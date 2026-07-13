@@ -4,9 +4,12 @@
   flex: 1;
   text-align: left;
 
+  // The decorative "Hey" is sized off the display token (1.5×) so it always
+  // tracks the hero title as both scale fluidly.
   .hero-greeting {
-    font-size: 12rem;
-    font-weight: 900;
+    font-family: var(--heading-font);
+    font-size: calc(var(--fs-display) * 1.5);
+    font-weight: 600;
     opacity: 0.5;
     color: transparent;
     background: linear-gradient(to top, #ff9c231a 0%, variables.$accent-color 50%);
@@ -17,8 +20,9 @@
   }
 
   .hero-title {
-    font-size: 8rem;
-    font-weight: 700;
+    font-family: var(--heading-font);
+    font-size: var(--fs-display);
+    font-weight: 600;
     color: variables.$primary-color;
     margin: 0 0 0.5rem 0;
     letter-spacing: -0.03em;
@@ -27,50 +31,35 @@
   }
 
   .hero-subtitle {
-    font-size: 1.4rem;
+    font-size: var(--fs-lg);
     color: variables.$secondary-color;
     margin: 0.8rem 0 2rem 0;
     font-weight: 500;
-    max-width: 500px;
-    line-height: 125%;
+    line-height: 1.4;
   }
 
   .hero-title--accent {
     display: inline-block;
-    font-size: 3rem;
-    font-weight: 600;
+    font-family: var(--heading-font);
+    font-size: var(--fs-h3);
+    font-weight: 500;
     letter-spacing: 1.1px;
     color: variables.$secondary-color;
     text-shadow: none;
   }
 }
 
+// Sizes are fluid via the clamp() tokens above; breakpoints now only adjust
+// layout (the greeting's negative overlap margin, centring on mobile).
 @media (max-width: variables.$bp-large) {
-  .hero-text {
-    .hero-greeting {
-      font-size: 8rem;
-      margin: 0 0 -4.2rem -1.5rem;
-    }
-    .hero-title {
-      font-size: 5rem;
-    }
-
-    .hero-title--accent {
-      font-size: 2.4rem;
-    }
+  .hero-text .hero-greeting {
+    margin: 0 0 -4.2rem -1.5rem;
   }
 }
 
 @media (max-width: variables.$bp-desktop) {
-  .hero-text {
-    .hero-greeting {
-      font-size: 6rem;
-      margin: 0 0 -3rem -1.5rem;
-    }
-
-    .hero-title {
-      font-size: 4rem;
-    }
+  .hero-text .hero-greeting {
+    margin: 0 0 -3rem -1.5rem;
   }
 }
 
@@ -79,40 +68,7 @@
     text-align: center;
 
     .hero-greeting {
-      font-size: 4.5rem;
       transform: translateX(-20%);
     }
-
-    .hero-title {
-      font-size: 4.2rem;
-    }
-
-    .hero-title--accent {
-      font-size: 2rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1.4rem;
-    }
-  }
-}
-
-@media (max-width: variables.$bp-medium) {
-  .hero-title {
-    font-size: 2.5rem;
-  }
-
-  .hero-tagline {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: variables.$bp-small) {
-  .hero-title {
-    font-size: 2rem;
-  }
-
-  .hero-tagline {
-    font-size: 1rem;
   }
 }

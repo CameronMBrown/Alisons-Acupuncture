@@ -7,7 +7,7 @@
 
 .services-section h2 {
   text-align: center;
-  font-size: 4rem;
+  font-size: var(--fs-h2);
   color: variables.$primary-color;
   margin-bottom: 2rem;
 }
@@ -133,9 +133,14 @@
     position: relative;
     z-index: 2;
     color: variables.$text-light;
-    font-size: 2.4rem;
+    font-size: var(--fs-h3);
     text-align: center;
     margin: 0;
+
+    // On desktop+ the cards are narrow (3–4 per row), so cap the title smaller
+    @media (min-width: variables.$bp-desktop) {
+      font-size: var(--fs-lg);
+    }
   }
 }
 
@@ -156,10 +161,24 @@
     position: relative;
     z-index: 1;
     color: variables.$text-light;
-    font-size: 1.3rem;
-    line-height: 1.6;
+    line-height: 1.35;
     text-align: center;
     margin: 0;
+
+    // Sized to the card's column count (mirrors the .service-card width
+    // breakpoints above): smaller as cards get narrower in 3+ columns, larger
+    // once cards go full-width in the 1-column layout. Media queries are
+    // ordered max-width:desktop then max-width:medium — same order as the
+    // column-count rules — so the narrower (medium) query wins on <=768px.
+    font-size: var(--fs-xs); // default: 3+ columns (desktop up, incl. ultrawide 4-col)
+
+    @media (max-width: variables.$bp-desktop) {
+      font-size: var(--fs-small); // 2 columns (768–992px)
+    }
+
+    @media (max-width: variables.$bp-medium) {
+      font-size: var(--fs-body); // 1 column (<768px) — cards are full-width
+    }
   }
 }
 
