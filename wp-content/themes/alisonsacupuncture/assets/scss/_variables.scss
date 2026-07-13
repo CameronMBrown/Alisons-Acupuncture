@@ -5,7 +5,8 @@ $primary-color: #5b7e3c;
 $text-light: #f9f7f4;
 $secondary-color: #3d3224;
 $alternate-color: #ffd65a;
-$accent-color: #ff9d23;
+$accent-color: #f8a946;
+$accent-strong: #a85906;
 $text-color: #333;
 $light-bg: #f9f7f4;
 $border-color: #e0ddd9;
@@ -16,6 +17,7 @@ $offwhite: rgba(249, 247, 244, 1);
 /* ----------------------------------------------- */
 $body-font:
   -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$heading-font: "Fraunces", "Fraunces Fallback", Georgia, "Times New Roman", serif;
 
 /* ----------------------------------------------- */
 // Breakpoints
@@ -28,11 +30,65 @@ $bp-medium: 768px;
 $bp-small: 480px;
 
 :root {
+  /* ---- Colour ---- */
   --primary-color: #{$primary-color};
   --secondary-color: #{$secondary-color};
   --accent-color: #{$accent-color};
+  --accent-strong: #{$accent-strong};
+  --alternate-color: #{$alternate-color};
   --text-color: #{$text-color};
   --text-light: #{$text-light};
   --light-bg: #{$light-bg};
   --border-color: #{$border-color};
+
+  /* ---- Typography ---- */
+  --heading-font: #{$heading-font};
+  --body-font: #{$body-font};
+
+  /* Fluid type scale — clamp(min, preferred+vw, max). Mins are tuned up for an
+     older / low-vision audience; maxes let text GROW on large/ultrawide screens.
+     NOTE: the OceanWP parent sets `html { font-size: 62.5% }`, so on this site
+     1rem = 10px (NOT 16px). These rem values are calibrated for that 10px root;
+     the px targets in the comments are what actually renders. (The `vw` term is
+     root-independent, so it carries the same px slope regardless.) */
+  /* Floor of the scale — flat at the accessibility floor (never go below this;
+     matches --fs-small's minimum) for compact/secondary text in tight layouts
+     (e.g. the service-card back copy at 3–4 columns). Deliberately NOT fluid:
+     it needs to read as clearly smaller than --fs-small across its whole
+     bracket, not converge with it at some viewport widths. */
+  --fs-xs: 1.6rem; /* 16px flat */
+  --fs-small: clamp(1.6rem, 1.52rem + 0.25vw, 1.84rem); /* 16 → 18.4px  (was 0.85rem) */
+  --fs-body: clamp(1.84rem, 1.68rem + 0.5vw, 2.24rem); /* 18.4 → 22.4px */
+  --fs-lg: clamp(2.08rem, 1.84rem + 0.8vw, 2.72rem); /* 20.8 → 27.2px  lead / emphasised body */
+  --fs-h3: clamp(2.56rem, 2.08rem + 1.5vw, 4.16rem); /* 25.6 → 41.6px */
+  --fs-h2: clamp(3.84rem, 2.88rem + 3vw, 5.6rem); /* 38.4 → 56px  section headings (was 4rem) */
+  --fs-display: clamp(4.16rem, 2.4rem + 5vw, 8rem); /* 41.6 → 80px  large hero-scale display */
+
+  /* ---- Spacing scale ---- */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 4rem;
+  --space-7: 6rem;
+  --space-8: 8rem;
+
+  /* ---- Radius scale ---- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+
+  /* ---- Elevation ---- */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  /* ---- Motion ---- */
+  --dur-fast: 0.2s;
+  --dur-base: 0.3s;
+  --dur-slow: 0.6s;
+  --ease: ease;
 }

@@ -10,10 +10,27 @@ html {
 
 body {
   font-family: variables.$body-font;
+  font-size: var(--fs-body);
   color: variables.$text-color;
   line-height: 1.6;
   padding-top: 80px;
   overflow: hidden;
+}
+
+// Headings use the self-hosted serif (Fraunces) by default. Per-section rules
+// still set size/colour; only the family is centralised here.
+//
+// Scoped under `.site` (the #page wrapper) so specificity (0,1,1) beats
+// OceanWP's Customizer heading rule (`h1,h2,…` = 0,0,1) which is injected
+// inline in <head> AFTER this stylesheet — an unscoped `h1,h2,h3` would lose on
+// source order and headings would fall back to OceanWP's Open Sans.
+.site h1,
+.site h2,
+.site h3,
+.site h4,
+.site h5,
+.site h6 {
+  font-family: var(--heading-font);
 }
 
 .cntr {

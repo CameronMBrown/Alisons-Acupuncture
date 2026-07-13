@@ -1,0 +1,56 @@
+// ============================================================
+// Accessibility guardrails
+// ============================================================
+
+// ---- Reduced motion ----------------------------------------
+// When a visitor has enabled "Reduce motion" at the OS level, honour it. The
+// DEFAULT (motion-on) experience is untouched — the playful hero stays lively
+// for everyone else. Here we only calm things for those who opted out.
+//
+// CSS covers CSS-driven motion. JS-driven parallax is guarded separately in
+// hero-parallax.js / about-parallax.js.
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  // Scroll-reveal content starts at opacity:0 and is animated in. With the
+  // animation removed we must EXPLICITLY reveal it, or it would stay invisible.
+  .fade-in,
+  .slide-in-left,
+  .slide-in-right,
+  .slide-in-bottom,
+  .slide-in-top {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  // Stop infinite decorative loops (hero rotating squares + bobbing accents,
+  // drifting background blobs). They render in a resting position instead.
+  .hero-accent-wrapper,
+  .hero-accent,
+  #hero-accent-1,
+  #hero-accent-2,
+  #hero-accent-3,
+  .blob-svg,
+  .blob-svg--top-left,
+  .blob-svg--bottom-right {
+    animation: none !important;
+  }
+
+  // Disable the service-card 3-D flip; hover/tap no longer spins the card.
+  .service-card-inner {
+    transition: none !important;
+  }
+
+  // Belt-and-braces: neutralise any remaining decorative timing without
+  // removing focus/interaction feedback entirely.
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
