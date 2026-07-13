@@ -1,4 +1,11 @@
 ;(function () {
+  // Respect the user's OS "reduce motion" setting — skip parallax entirely.
+  if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  )
+    return
+
   // --- CONFIG: adjust these values ---
   var SCROLL_RANGE = 1000 // px scrolled past hero top for full animation
   var TRANSLATE_LEFT_1 = 100 // trees-1 moves left (px) — least

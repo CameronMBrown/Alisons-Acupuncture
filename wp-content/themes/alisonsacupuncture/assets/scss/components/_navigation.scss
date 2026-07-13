@@ -120,10 +120,12 @@
   }
 
   .nav-phone-link {
-    color: variables.$accent-color;
+    // accent-strong (not bright accent) so the phone number clears AA on the
+    // off-white header background.
+    color: variables.$accent-strong;
     text-decoration: none;
     font-size: 1.8rem;
-    font-weight: 500;
+    font-weight: 600;
     padding: 0.5rem 1rem;
     transition: all 0.2s ease;
 

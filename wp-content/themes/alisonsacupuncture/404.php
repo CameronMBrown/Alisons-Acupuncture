@@ -42,7 +42,7 @@ $logo_url = wp_get_attachment_image_url(137, 'full');
           <p class="hero-subtitle slide-in-bottom delay-short">
             <?php esc_html_e('It looks like nothing was found at this location. Return to the homepage?', 'alisonsacupuncture'); ?>
           </p>
-          <a href="<?php echo esc_url(home_url('/')); ?>" class="hero-cta-btn slide-in-bottom delay-regular">
+          <a href="<?php echo esc_url(home_url('/')); ?>" class="btn slide-in-bottom delay-regular">
             <?php esc_html_e('Go to Homepage', 'alisonsacupuncture'); ?>
           </a>
         </div>

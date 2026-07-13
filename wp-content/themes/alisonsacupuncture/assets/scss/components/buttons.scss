@@ -51,35 +51,36 @@
 .btn-accent,
 form .btn-accent[type="submit"] {
   background-color: variables.$accent-color;
-  color: #fff;
+  // Dark text (not white) so it clears WCAG AA on the bright accent fill.
+  color: variables.$secondary-color;
   border: none;
 
   &:hover {
-    color: #fff;
+    color: variables.$secondary-color;
     background-color: variables.$accent-color;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) brightness(0.9);
   }
 
   &:active {
-    color: #fff;
+    color: variables.$secondary-color;
     background-color: variables.$accent-color;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) brightness(0.75);
   }
 
   &:focus {
-    color: #fff;
+    color: variables.$secondary-color;
     background-color: variables.$accent-color;
     filter: brightness(0.85);
     outline: none;
   }
 
   &:focus-visible {
-    color: #fff;
+    color: variables.$secondary-color;
     outline: 3px solid variables.$secondary-color;
     outline-offset: 2px;
   }
 
   &:visited {
-    color: #fff;
+    color: variables.$secondary-color;
   }
 }

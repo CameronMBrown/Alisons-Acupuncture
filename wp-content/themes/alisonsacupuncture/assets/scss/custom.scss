@@ -1,5 +1,6 @@
 @use "base";
 @use "variables";
+@use "fonts";
 @use "animations";
 @use "dev";
 
@@ -17,3 +18,7 @@
 @use "components/buttons";
 @use "components/navigation";
 @use "components/blobs";
+@use "components/glass-card";
+
+/* Accessibility guardrails — kept last so its reduced-motion overrides win */
+@use "accessibility";

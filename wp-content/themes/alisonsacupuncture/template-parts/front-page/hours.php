@@ -47,7 +47,7 @@ $hours_alt_txt = get_post_meta($img_id, '_wp_attachment_image_alt', true);
       </table>
 
       <?php if (get_field('hours_note')) : ?>
-        <p class="hours-note slide-in-right delay-regular"><?php the_field('hours_note'); ?></p>
+        <p class="hours-note glass-card slide-in-right delay-regular"><?php the_field('hours_note'); ?></p>
       <?php endif; ?>
     </div>
   </div>

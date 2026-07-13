@@ -48,7 +48,7 @@ $name     = isset($_GET['name']) ? sanitize_text_field(wp_unslash($_GET['name'])
             <?php endif; ?>
           </p>
           <button class="slide-in-bottom delay-regular">
-            <a href="<?php echo esc_url(home_url('/')); ?>" class="btn hero-cta-btn">
+            <a href="<?php echo esc_url(home_url('/')); ?>" class="btn">
               Return to Homepage
             </a>
           </button>

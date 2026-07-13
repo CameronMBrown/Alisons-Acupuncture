@@ -113,7 +113,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "Acupuncture & Dry Needling in Cobourg — Healing Through Traditional Chinese Medicine",
+                    "default_value": "Personalized acupuncture and dry needling care to help your body heal, naturally.",
                     "maxlength": "",
                     "allow_in_bindings": 1,
                     "placeholder": "Enter a short introduction or tagline",
@@ -224,7 +224,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
+            "default_value": "Alison's mission is to help every patient move, sleep, and live with less pain — using the time-tested principles of Traditional Chinese Medicine alongside the clinical expertise of a Registered Practical Nurse. Each treatment plan is built around you: your symptoms, your goals, and your body's own capacity to heal. Whether you're managing chronic pain, recovering from injury, or simply seeking better balance, Alison combines acupuncture, dry needling, and hands-on techniques in a calm, welcoming space in Cobourg — because healing works best when you feel cared for, not just treated.",
             "maxlength": "",
             "allow_in_bindings": 0,
             "placeholder": "",

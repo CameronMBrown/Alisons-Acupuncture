@@ -1,0 +1,15 @@
+@use "../variables";
+
+// Frosted "glass" surface — a translucent white panel with a soft border and
+// rounded corners. Designed to sit on the darker/green section backgrounds
+// (contact, hours) where the translucency reads as glass. Generic and reusable.
+.glass-card {
+  padding: var(--space-4); // 2rem
+  border-radius: var(--radius-lg); // 12px
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+
+  @media (max-width: variables.$bp-small) {
+    padding: 1.25rem;
+  }
+}

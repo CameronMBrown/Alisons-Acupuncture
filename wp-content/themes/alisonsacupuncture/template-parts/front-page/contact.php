@@ -214,7 +214,7 @@ $active_panel = $has_error ? 'contact' : 'booking';
         <div class="contact-panels slide-in-left">
           <!-- Book Appointment panel (ClinicSense widget) -->
           <div
-            class="contact-panel booking-widget-wrapper<?php echo $active_panel === 'booking' ? ' is-active' : ''; ?>"
+            class="contact-panel booking-widget-wrapper glass-card<?php echo $active_panel === 'booking' ? ' is-active' : ''; ?>"
             id="contact-panel-booking"
             role="tabpanel"
             aria-labelledby="contact-tab-booking"

@@ -14,7 +14,7 @@
   margin-bottom: 2rem;
 
   h2 {
-    font-size: 4rem;
+    font-size: var(--fs-h2);
     color: variables.$accent-color;
     margin-bottom: 1.5rem;
   }
@@ -88,7 +88,7 @@
 
   &.is-active {
     background: variables.$accent-color;
-    color: #fff;
+    color: variables.$secondary-color; // dark text for AA on the accent fill
   }
 
   &:focus-visible {
@@ -136,7 +136,7 @@
   }
 
   .contact-meta {
-    font-size: 1.2rem;
+    font-size: var(--fs-sm);
     flex-direction: column;
     align-items: center;
   }
