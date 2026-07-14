@@ -1165,6 +1165,19 @@ body:has(#wpadminbar) .site {
   resize: vertical;
   min-height: 120px;
 }
+.contact-form-wrapper .contact-form-disclaimer {
+  margin: 1rem 0 0;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+.contact-form-wrapper .contact-form-disclaimer a {
+  color: #fff;
+  text-decoration: underline;
+}
+.contact-form-wrapper .contact-form-disclaimer a:hover {
+  color: #f8a946;
+}
 
 /* ---- Map ---- */
 .contact-map-wrapper {
@@ -1449,6 +1462,86 @@ body:has(#wpadminbar) .site {
   bottom: 0;
 }
 
+/* ---- Privacy Policy hero (shares the trees/logo background treatment used
+   by the 404 and thank-you pages, but sized for a page with real content
+   below it rather than a full-viewport centered blurb) ---- */
+.legal-hero-section {
+  min-height: 40vh;
+  height: auto;
+  padding: 6rem 0 4rem;
+}
+.legal-hero-section .legal-hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.legal-hero-section .legal-hero-content h1 {
+  font-size: 4rem;
+}
+.legal-hero-section .error-404-logo-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+}
+.legal-hero-section .error-404-logo-bg img {
+  max-width: 60%;
+  height: auto;
+  opacity: 0.06;
+}
+.legal-hero-section .hero-subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+.legal-hero-section .trees-background-container {
+  z-index: 2;
+}
+.legal-hero-section .trees-background-container .trees-3 {
+  bottom: 5%;
+}
+.legal-hero-section .trees-background-container .trees-4 {
+  bottom: 0;
+}
+
+/* ---- Policy body copy ---- */
+.legal-section {
+  padding: 2rem 0 var(--space-8);
+}
+
+.legal-content {
+  max-width: 720px;
+  margin: 0 auto;
+  color: #333;
+  font-size: var(--fs-small);
+  line-height: 1.7;
+}
+.legal-content .legal-updated {
+  color: #3d3224;
+  font-size: var(--fs-xs);
+  font-style: italic;
+  margin-bottom: var(--space-5);
+}
+.legal-content h2 {
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-h3);
+  color: #5b7e3c;
+}
+.legal-content p {
+  margin-bottom: var(--space-3);
+}
+.legal-content a {
+  color: #a85906;
+}
+.legal-content .btn {
+  margin-top: var(--space-4);
+}
+
 .site-footer {
   background-color: #f9f7f4;
   padding: 3rem 0 1.5rem;
@@ -1525,6 +1618,15 @@ body:has(#wpadminbar) .site {
 
 .footer-copyright {
   opacity: 0.8;
+}
+
+.footer-privacy-link {
+  margin-left: 0.75rem;
+  color: #333;
+  text-decoration: underline;
+}
+.footer-privacy-link:hover {
+  color: #5b7e3c;
 }
 
 .footer-credit {

@@ -1,0 +1,95 @@
+@use "../variables";
+
+/* ---- Privacy Policy hero (shares the trees/logo background treatment used
+   by the 404 and thank-you pages, but sized for a page with real content
+   below it rather than a full-viewport centered blurb) ---- */
+
+.legal-hero-section {
+  min-height: 40vh;
+  height: auto;
+  padding: 6rem 0 4rem;
+
+  .legal-hero-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+
+    h1 {
+      font-size: 4rem;
+    }
+  }
+
+  .error-404-logo-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1;
+
+    img {
+      max-width: 60%;
+      height: auto;
+      opacity: 0.06;
+    }
+  }
+
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .trees-background-container {
+    z-index: 2;
+
+    .trees-3 {
+      bottom: 5%;
+    }
+    .trees-4 {
+      bottom: 0;
+    }
+  }
+}
+
+/* ---- Policy body copy ---- */
+
+.legal-section {
+  padding: 2rem 0 var(--space-8);
+}
+
+.legal-content {
+  max-width: 720px;
+  margin: 0 auto;
+  color: variables.$text-color;
+  font-size: var(--fs-small);
+  line-height: 1.7;
+
+  .legal-updated {
+    color: variables.$secondary-color;
+    font-size: var(--fs-xs);
+    font-style: italic;
+    margin-bottom: var(--space-5);
+  }
+
+  h2 {
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-2);
+    font-size: var(--fs-h3);
+    color: variables.$primary-color;
+  }
+
+  p {
+    margin-bottom: var(--space-3);
+  }
+
+  a {
+    color: variables.$accent-strong;
+  }
+
+  .btn {
+    margin-top: var(--space-4);
+  }
+}
