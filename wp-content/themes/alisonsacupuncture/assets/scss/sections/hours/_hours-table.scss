@@ -11,7 +11,7 @@
 
   th,
   td {
-    padding: 1rem 1.25rem;
+    padding: 1rem 2rem;
     text-align: left;
     color: variables.$primary-color;
     font-size: var(--fs-body);
@@ -21,6 +21,11 @@
 
   td {
     color: variables.$secondary-color;
+    text-align: right;
+  }
+
+  .hours-meridiem {
+    font-size: var(--fs-xs);
   }
 
   tr {
@@ -28,6 +33,12 @@
 
     &.closed {
       background-color: rgba(0, 0, 0, 0.05);
+
+      th,
+      tr,
+      td {
+        font-size: var(--fs-xs);
+      }
     }
 
     &:last-child {
