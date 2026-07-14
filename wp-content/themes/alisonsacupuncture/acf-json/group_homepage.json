@@ -296,164 +296,655 @@
             "append": ""
         },
         {
-            "key": "field_hours_monday",
-            "label": "Monday Hours",
-            "name": "hours_monday",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Closed",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_hours_tuesday",
-            "label": "Tuesday Hours",
-            "name": "hours_tuesday",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "8:00 AM - 4:30 PM",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_hours_wednesday",
-            "label": "Wednesday Hours",
-            "name": "hours_wednesday",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "8:00 AM - 4:30 PM",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_hours_thursday",
-            "label": "Thursday Hours",
-            "name": "hours_thursday",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "8:00 AM - 4:30 PM",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_hours_friday",
-            "label": "Friday Hours",
-            "name": "hours_friday",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "8:00 AM - 4:30 PM",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_hours_saturday",
-            "label": "Saturday Hours",
-            "name": "hours_saturday",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Closed",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_hours_sunday",
-            "label": "Sunday Hours",
-            "name": "hours_sunday",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Closed",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_hours_note",
             "label": "Hours Note",
             "name": "hours_note",
             "aria-label": "",
-            "type": "text",
+            "type": "textarea",
             "instructions": "",
-            "required": false,
-            "conditional_logic": false,
+            "required": 0,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "default_value": "Evening hours vary week to week. Contact me directly for scheduling.",
+            "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": "",
             "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "new_lines": ""
+        },
+        {
+            "key": "field_hours_monday_tab",
+            "label": "Monday",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_hours_monday_is_open",
+            "label": "Is Open",
+            "name": "hours_monday_is_open",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Open",
+            "ui_off_text": "Closed"
+        },
+        {
+            "key": "field_hours_monday_opening_time",
+            "label": "Opening Time",
+            "name": "hours_monday_opening_time",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_hours_monday_is_open",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "g:i A",
+            "return_format": "g:i A",
+            "default_value": "8:00 AM"
+        },
+        {
+            "key": "field_hours_monday_closing_time",
+            "label": "Closing Time",
+            "name": "hours_monday_closing_time",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_hours_monday_is_open",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "g:i A",
+            "return_format": "g:i A",
+            "default_value": "4:30 PM"
+        },
+        {
+            "key": "field_hours_tuesday_tab",
+            "label": "Tuesday",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_hours_tuesday_is_open",
+            "label": "Is Open",
+            "name": "hours_tuesday_is_open",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "Open",
+            "ui_off_text": "Closed"
+        },
+        {
+            "key": "field_hours_tuesday_opening_time",
+            "label": "Opening Time",
+            "name": "hours_tuesday_opening_time",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_hours_tuesday_is_open",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "g:i A",
+            "return_format": "g:i A",
+            "default_value": "8:00 AM"
+        },
+        {
+            "key": "field_hours_tuesday_closing_time",
+            "label": "Closing Time",
+            "name": "hours_tuesday_closing_time",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_hours_tuesday_is_open",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "g:i A",
+            "return_format": "g:i A",
+            "default_value": "4:30 PM"
+        },
+        {
+            "key": "field_hours_wednesday_tab",
+            "label": "Wednesday",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_hours_wednesday_is_open",
+            "label": "Is Open",
+            "name": "hours_wednesday_is_open",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "Open",
+            "ui_off_text": "Closed"
+        },
+        {
+            "key": "field_hours_wednesday_opening_time",
+            "label": "Opening Time",
+            "name": "hours_wednesday_opening_time",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_hours_wednesday_is_open",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "g:i A",
+            "return_format": "g:i A",
+            "default_value": "8:00 AM"
+        },
+        {
+            "key": "field_hours_wednesday_closing_time",
+            "label": "Closing Time",
+            "name": "hours_wednesday_closing_time",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_hours_wednesday_is_open",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "g:i A",
+            "return_format": "g:i A",
+            "default_value": "4:30 PM"
+        },
+        {
+            "key": "field_hours_thursday_tab",
+            "label": "Thursday",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_hours_thursday_is_open",
+            "label": "Is Open",
+            "name": "hours_thursday_is_open",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "Open",
+            "ui_off_text": "Closed"
+        },
+        {
+            "key": "field_hours_thursday_opening_time",
+            "label": "Opening Time",
+            "name": "hours_thursday_opening_time",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_hours_thursday_is_open",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "g:i A",
+            "return_format": "g:i A",
+            "default_value": "8:00 AM"
+        },
+        {
+            "key": "field_hours_thursday_closing_time",
+            "label": "Closing Time",
+            "name": "hours_thursday_closing_time",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_hours_thursday_is_open",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "g:i A",
+            "return_format": "g:i A",
+            "default_value": "4:30 PM"
+        },
+        {
+            "key": "field_hours_friday_tab",
+            "label": "Friday",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_hours_friday_is_open",
+            "label": "Is Open",
+            "name": "hours_friday_is_open",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "Open",
+            "ui_off_text": "Closed"
+        },
+        {
+            "key": "field_hours_friday_opening_time",
+            "label": "Opening Time",
+            "name": "hours_friday_opening_time",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_hours_friday_is_open",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "g:i A",
+            "return_format": "g:i A",
+            "default_value": "8:00 AM"
+        },
+        {
+            "key": "field_hours_friday_closing_time",
+            "label": "Closing Time",
+            "name": "hours_friday_closing_time",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_hours_friday_is_open",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "g:i A",
+            "return_format": "g:i A",
+            "default_value": "4:30 PM"
+        },
+        {
+            "key": "field_hours_saturday_tab",
+            "label": "Saturday",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_hours_saturday_is_open",
+            "label": "Is Open",
+            "name": "hours_saturday_is_open",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Open",
+            "ui_off_text": "Closed"
+        },
+        {
+            "key": "field_hours_saturday_opening_time",
+            "label": "Opening Time",
+            "name": "hours_saturday_opening_time",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_hours_saturday_is_open",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "g:i A",
+            "return_format": "g:i A",
+            "default_value": "8:00 AM"
+        },
+        {
+            "key": "field_hours_saturday_closing_time",
+            "label": "Closing Time",
+            "name": "hours_saturday_closing_time",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_hours_saturday_is_open",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "g:i A",
+            "return_format": "g:i A",
+            "default_value": "4:30 PM"
+        },
+        {
+            "key": "field_hours_sunday_tab",
+            "label": "Sunday",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_hours_sunday_is_open",
+            "label": "Is Open",
+            "name": "hours_sunday_is_open",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Open",
+            "ui_off_text": "Closed"
+        },
+        {
+            "key": "field_hours_sunday_opening_time",
+            "label": "Opening Time",
+            "name": "hours_sunday_opening_time",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_hours_sunday_is_open",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "g:i A",
+            "return_format": "g:i A",
+            "default_value": "8:00 AM"
+        },
+        {
+            "key": "field_hours_sunday_closing_time",
+            "label": "Closing Time",
+            "name": "hours_sunday_closing_time",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_hours_sunday_is_open",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "g:i A",
+            "return_format": "g:i A",
+            "default_value": "4:30 PM"
         },
         {
             "key": "field_6a1ee77d9ddf4",
@@ -1564,5 +2055,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1783800000
+    "modified": 1783961383
 }
