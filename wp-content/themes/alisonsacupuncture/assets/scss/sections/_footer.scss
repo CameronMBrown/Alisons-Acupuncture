@@ -85,6 +85,16 @@
   opacity: 0.8;
 }
 
+.footer-privacy-link {
+  margin-left: 0.75rem;
+  color: variables.$text-color;
+  text-decoration: underline;
+
+  &:hover {
+    color: variables.$primary-color;
+  }
+}
+
 .footer-credit {
   // Raised from 0.5 so the faded credit text still clears AA contrast.
   opacity: 0.7;
