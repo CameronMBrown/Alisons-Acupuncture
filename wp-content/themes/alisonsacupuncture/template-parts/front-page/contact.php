@@ -306,6 +306,15 @@ $active_panel = $has_error ? 'contact' : 'booking';
               <input type="hidden" name="contact_submit" value="1">
 
               <button type="submit" class="btn btn-accent">Send Message</button>
+
+              <p class="contact-form-disclaimer">
+                This form is for direct correspondence only. I'll use it to reply to your
+                message, nothing else. No mailing lists, no marketing emails, no sharing your
+                information with anyone else. See the
+                <a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>">privacy policy</a>
+                for details. If you have sensitive health information to share, please call
+                instead of putting it in the message box.
+              </p>
             </form>
           </div>
         </div>

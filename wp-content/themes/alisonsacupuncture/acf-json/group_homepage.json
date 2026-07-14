@@ -172,15 +172,16 @@
             "aria-label": "",
             "type": "text",
             "instructions": "",
-            "required": false,
-            "conditional_logic": false,
+            "required": 0,
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "default_value": "About Alison — Your Cobourg Acupuncturist & RPN",
+            "default_value": "About My Practice",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
@@ -224,7 +225,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Alison's mission is to help every patient move, sleep, and live with less pain — using the time-tested principles of Traditional Chinese Medicine alongside the clinical expertise of a Registered Practical Nurse. Each treatment plan is built around you: your symptoms, your goals, and your body's own capacity to heal. Whether you're managing chronic pain, recovering from injury, or simply seeking better balance, Alison combines acupuncture, dry needling, and hands-on techniques in a calm, welcoming space in Cobourg — because healing works best when you feel cared for, not just treated.",
+            "default_value": "I want to help you move easier, sleep better, and hurt less. That's the whole point. I trained in Traditional Chinese Medicine, and I also spent years working as a Registered Practical Nurse, so when I build a treatment plan, I'm looking at the  whole picture, not just the symptom that brought you in. Maybe you've been dealing with chronic pain for years. Maybe you're recovering from an injury, or you just want your body to feel more balanced. Whatever it is, I use acupuncture, dry needling, and hands-on technique s in a calm space here in Cobourg, and I take the time to actually listen before I start treating.",
             "maxlength": "",
             "allow_in_bindings": 0,
             "placeholder": "",
@@ -1984,12 +1985,12 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Pick a time that works for you — booking here syncs directly with Alison's calendar.",
+            "default_value": "Book here to reserve a spot in my appointments calendar.",
             "maxlength": "",
+            "allow_in_bindings": 0,
             "rows": 3,
             "placeholder": "",
-            "new_lines": "",
-            "allow_in_bindings": 0
+            "new_lines": ""
         },
         {
             "key": "field_6a2c0f1a0c003",
@@ -2055,5 +2056,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1783961383
+    "modified": 1784047412
 }

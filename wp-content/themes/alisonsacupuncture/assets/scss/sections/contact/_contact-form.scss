@@ -96,6 +96,22 @@
       min-height: 120px;
     }
   }
+
+  .contact-form-disclaimer {
+    margin: 1rem 0 0;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+
+    a {
+      color: #fff;
+      text-decoration: underline;
+
+      &:hover {
+        color: variables.$accent-color;
+      }
+    }
+  }
 }
 
 /* ---- Map ---- */
