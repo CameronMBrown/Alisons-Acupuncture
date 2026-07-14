@@ -631,7 +631,7 @@ body:has(#wpadminbar) .site {
 }
 .hours-table th,
 .hours-table td {
-  padding: 1rem 1.25rem;
+  padding: 1rem 2rem;
   text-align: left;
   color: #5b7e3c;
   font-size: var(--fs-body);
@@ -640,12 +640,21 @@ body:has(#wpadminbar) .site {
 }
 .hours-table td {
   color: #3d3224;
+  text-align: right;
+}
+.hours-table .hours-meridiem {
+  font-size: var(--fs-xs);
 }
 .hours-table tr {
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 .hours-table tr.closed {
   background-color: rgba(0, 0, 0, 0.05);
+}
+.hours-table tr.closed th,
+.hours-table tr.closed tr,
+.hours-table tr.closed td {
+  font-size: var(--fs-xs);
 }
 .hours-table tr:last-child {
   border-bottom: 0;
@@ -692,6 +701,7 @@ body:has(#wpadminbar) .site {
   max-width: 80%;
 }
 .hours-layout h2 {
+  text-align: center;
   font-size: var(--fs-h2);
   margin-bottom: 2rem;
   color: #f9f7f4;
@@ -743,7 +753,6 @@ body:has(#wpadminbar) .site {
     margin: 0;
   }
   .hours-layout .hours-content {
-    text-align: center;
     max-width: none;
   }
   .hours-layout .hours-content h2 {
@@ -1509,7 +1518,7 @@ body:has(#wpadminbar) .site {
 }
 .footer-bottom p {
   margin: 0;
-  font-size: var(--fs-small);
+  font-size: var(--fs-xs);
   color: #333;
   line-height: 1.6;
 }

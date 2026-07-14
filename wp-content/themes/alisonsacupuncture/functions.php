@@ -104,3 +104,13 @@ add_action('template_redirect', function () {
   }
 });
 
+// Format a "8:00 AM"-style time string with the AM/PM suffix wrapped for smaller styling
+function alisons_format_hours_time($time_string)
+{
+  if (preg_match('/^(\d{1,2}:\d{2})\s*([AaPp][Mm])$/', trim($time_string), $matches)) {
+    return esc_html($matches[1]) . ' <span class="hours-meridiem">' . esc_html(strtoupper($matches[2])) . '</span>';
+  }
+
+  return esc_html($time_string);
+}
+
