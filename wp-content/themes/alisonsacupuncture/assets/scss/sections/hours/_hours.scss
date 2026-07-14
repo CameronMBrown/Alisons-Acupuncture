@@ -50,6 +50,7 @@
   }
 
   h2 {
+    text-align: center;
     font-size: var(--fs-h2);
     margin-bottom: 2rem;
     color: variables.$text-light;
@@ -106,7 +107,6 @@
     margin: 0;
 
     .hours-content {
-      text-align: center;
       max-width: none;
 
       h2 {

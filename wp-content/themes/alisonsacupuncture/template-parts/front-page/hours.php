@@ -34,13 +34,21 @@ $hours_alt_txt = get_post_meta($img_id, '_wp_attachment_image_alt', true);
         <tbody>
           <?php foreach ($days as $day_key => $day_label) : ?>
             <?php
-            $hours_value = get_field('hours_' . $day_key);
-            $is_closed = is_string($hours_value) && strtolower(trim($hours_value)) === 'closed';
+            $is_open = (bool) get_field('hours_' . $day_key . '_is_open');
+            $opening_time = get_field('hours_' . $day_key . '_opening_time');
+            $closing_time = get_field('hours_' . $day_key . '_closing_time');
+            $has_hours = $is_open && $opening_time && $closing_time;
             ?>
-            <tr class="<?php echo $is_closed ? 'closed' : ''; ?>"
+            <tr class="<?php echo $has_hours ? '' : 'closed'; ?>"
               data-day="<?php echo esc_attr($day_key); ?>">
               <th scope="row"><?php echo esc_html($day_label); ?></th>
-              <td><?php echo esc_html($hours_value); ?></td>
+              <td>
+                <?php if ($has_hours) : ?>
+                  <?php echo alisons_format_hours_time($opening_time); ?> &ndash; <?php echo alisons_format_hours_time($closing_time); ?>
+                <?php else : ?>
+                  Closed
+                <?php endif; ?>
+              </td>
             </tr>
           <?php endforeach; ?>
         </tbody>
