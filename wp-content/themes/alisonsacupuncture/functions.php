@@ -78,15 +78,17 @@ add_action('after_setup_theme', function () {
   ));
 });
 
-// Register thank-you query var
+// Register thank-you + privacy-policy query vars
 add_filter('query_vars', function ($vars) {
   $vars[] = 'thank_you';
+  $vars[] = 'privacy_policy';
   return $vars;
 });
 
-// Register /thank-you/ rewrite rule
+// Register /thank-you/ and /privacy-policy/ rewrite rules
 add_action('init', function () {
   add_rewrite_rule('^thank-you/?$', 'index.php?thank_you=1', 'top');
+  add_rewrite_rule('^privacy-policy/?$', 'index.php?privacy_policy=1', 'top');
 });
 
 // Handle thank-you page
@@ -100,6 +102,14 @@ add_action('template_redirect', function () {
     });
 
     include get_stylesheet_directory() . '/template-parts/thank-you.php';
+    exit;
+  }
+});
+
+// Handle privacy policy page
+add_action('template_redirect', function () {
+  if (get_query_var('privacy_policy')) {
+    include get_stylesheet_directory() . '/template-parts/privacy-policy.php';
     exit;
   }
 });

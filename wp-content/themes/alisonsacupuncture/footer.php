@@ -48,7 +48,10 @@ $instagram_url = $homepage_id ? get_field('instagram', $homepage_id) : '';
     <hr class="footer-divider">
 
     <div class="footer-bottom">
-      <p class="footer-copyright">&copy; <?php echo date('Y'); ?> Alison's Acupuncture</p>
+      <p class="footer-copyright">
+        &copy; <?php echo date('Y'); ?> Alison's Acupuncture
+        <a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>" class="footer-privacy-link">Privacy Policy</a>
+      </p>
       <p class="footer-credit">
         Site by Brown Hat Digital
         <a href="https://github.com/CameronMBrown" target="_blank" rel="noopener noreferrer" aria-label="GitHub">

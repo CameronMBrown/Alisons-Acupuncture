@@ -17,7 +17,7 @@ $bg_image_url = $bg_image_id ? wp_get_attachment_image_url($bg_image_id, 'full')
       <div class="about-content">
         <div class="about-text">
           <h2 class="text-3d-shadow slide-in-left"><?php echo esc_html($title); ?></h2>
-          <p class="slide-in-left"><?php echo esc_html($body); ?></p>
+          <p class="slide-in-left delay-short"><?php echo esc_html($body); ?></p>
         </div>
       </div>
     </div>
