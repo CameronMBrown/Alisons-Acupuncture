@@ -1331,6 +1331,92 @@
             ]
         },
         {
+            "key": "field_6a5fd055e34ff",
+            "label": "Fire Cupping",
+            "name": "fire_cupping",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_6a5fd055e3500",
+                    "label": "Fire Cupping Title",
+                    "name": "fire_cupping_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Fire Cupping",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_6a5fd055e3501",
+                    "label": "Fire Cupping Description",
+                    "name": "fire_cupping_description",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Fire cupping is a traditional therapy where a practitioner briefly places a lit, alcohol-soaked cotton swab inside a glass cup to remove the oxygen. As the trapped air cools, it creates a vacuum that suctions the skin. This process pulls blood to the area to help relieve muscle tension, improve circulation, and promote healing.",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_6a5fd055e3502",
+                    "label": "Fire Cupping Image",
+                    "name": "fire_cupping_image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0,
+                    "preview_size": "medium"
+                }
+            ]
+        },
+        {
             "key": "field_6a1eea87c61e4",
             "label": "Tissue Work",
             "name": "tissue_work",
@@ -2056,5 +2142,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1784047412
+    "modified": 1784664243
 }

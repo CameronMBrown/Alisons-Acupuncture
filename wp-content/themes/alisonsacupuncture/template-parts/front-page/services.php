@@ -9,6 +9,7 @@ $services = [
   'electroacupuncture'   => ['title' => 'electroacupuncture_title',   'desc' => 'electroacupuncture_description',   'img' => 'electroacupuncture_image'],
   'dry_needling'         => ['title' => 'dryneedling_title',          'desc' => 'dryneedling_description',          'img' => 'dryneedling_image'],
   'cupping'              => ['title' => 'cupping_title',              'desc' => 'cupping_description',              'img' => 'cupping_image'],
+  'fire_cupping'         => ['title' => 'fire_cupping_title',         'desc' => 'fire_cupping_description',         'img' => 'fire_cupping_image'],
   'tissue_work'          => ['title' => 'tissuework_title',           'desc' => 'tissuework_description',           'img' => 'tissuework_image'],
   'lower_tissue_work'    => ['title' => 'lowertissuework_title',      'desc' => 'lowertissuework_description',      'img' => 'lowertissuework_image'],
   'guasha'               => ['title' => 'guasha_title',               'desc' => 'guasha_description',               'img' => 'guasha_image'],
