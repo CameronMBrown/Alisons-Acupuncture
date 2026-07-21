@@ -50,9 +50,8 @@ $trees = wp_get_attachment_image_src(142, 'full', false,);
         </button>
       </div>
       <div class="hero-image-wrapper">
-        <div class="hero-image-frame">
-          <img src="<?php echo esc_url($portrait_src[0]); ?>" alt="<?php echo esc_attr($portrait_alt); ?>" class="hero-avatar" loading="eager">
-        </div>
+        <div class="hero-image-frame"></div>
+        <img src="<?php echo esc_url($portrait_src[0]); ?>" alt="<?php echo esc_attr($portrait_alt); ?>" class="hero-avatar" loading="eager">
         <div class="hero-decorative-elements">
           <div class="hero-accent-wrapper">
             <div id="hero-accent-1" class="hero-accent"></div>

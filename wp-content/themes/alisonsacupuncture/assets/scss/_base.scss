@@ -36,7 +36,7 @@ body {
 .cntr {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 5%;
+  padding: 1rem 3rem;
 
   &.left {
     width: 100%;
@@ -49,6 +49,11 @@ body {
   }
 }
 
+@media (max-width: variables.$bp-medium) {
+  .cntr {
+    padding: 1rem 2rem;
+  }
+}
 @media (max-width: variables.$bp-small) {
   .cntr {
     padding: 0 1rem;
