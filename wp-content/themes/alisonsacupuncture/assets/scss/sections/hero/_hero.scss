@@ -32,21 +32,28 @@
 
 // Hero CTA now uses the shared `.btn` component (see components/buttons.scss).
 
+// `--frame-size` is the single source of truth for the circle's diameter —
+// set it once per breakpoint and both the wrapper and its ::after derive
+// their box from it via `aspect-ratio: 1 / 1`, so width and height can
+// never drift apart (row layout, column layout, or anything in between).
 .hero-image-wrapper {
+  --frame-size: 380px;
   flex: 1;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 380px;
+  width: var(--frame-size);
+  max-width: var(--frame-size);
+  aspect-ratio: 1 / 1;
 
   &::after {
     content: "";
     position: absolute;
     top: 5%;
     left: 5%;
-    width: 380px;
-    height: 380px;
+    width: var(--frame-size);
+    aspect-ratio: 1 / 1;
     background-color: variables.$alternate-color;
     border-radius: 50%;
     pointer-events: none;
@@ -55,28 +62,58 @@
   }
 }
 
+// Circular frame — sits behind the portrait. Only its bottom half stays
+// visible: the avatar's dome clip covers the same circle exactly (inset by
+// the border width), so the frame's ring peeks out along the bottom curve
+// while the top half is fully hidden under the portrait.
 .hero-image-frame {
-  position: relative;
-  width: 380px;
-  height: 380px;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(135deg, variables.$primary-color 0%, #1f3810 100%);
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
   border: 3px solid variables.$accent-color;
   box-shadow:
     0 12px 40px rgba(45, 80, 22, 0.2),
     inset 0 0 30px rgba(255, 255, 255, 0.1);
+  z-index: 1;
 }
 
+// Portrait — taller than the frame so it "pops out" above it in 3D.
+// Width equals the frame's diameter (D), height is 1.1D, anchored to the
+// wrapper's bottom edge. For the bottom corners to draw a true semicircle
+// (not an ellipse), the horizontal and vertical radii must both equal D/2
+// in px. Horizontal is 50% of width (D) = D/2. Vertical must also be D/2,
+// but as a % of this box's height (1.1D) that's 50%/1.1 — hence the calc.
+// That semicircle spans exactly the bottom half of the frame; everything
+// above it is a plain rectangle, covering the frame's top half and poking
+// out 0.1D above it. Purely relative, so it holds at every breakpoint
+// without extra media queries.
 .hero-avatar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
   width: 100%;
-  height: 100%;
+  height: 110%;
   object-fit: cover;
   display: block;
-  border-radius: 50%;
+  border-radius: 0;
+  border-bottom-left-radius: 50% calc(50% / 1.1);
+  border-bottom-right-radius: 50% calc(50% / 1.1);
+  z-index: 2;
+}
+
+// Tablet: text shrinks first, image-wrapper holds its width.
+@media (max-width: variables.$bp-desktop) {
+  .hero-text {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .hero-image-wrapper {
+    flex: 0 0 var(--frame-size);
+  }
 }
 
 @media (max-width: variables.$bp-medium) {
@@ -90,25 +127,14 @@
     }
   }
 
-  .hero-image-wrapper::after {
-    max-width: 300px;
-    height: 300px;
-  }
-
-  .hero-image-frame {
-    width: 300px;
-    height: 300px;
+  .hero-image-wrapper {
+    --frame-size: 300px;
+    margin-top: 3rem;
   }
 }
 
 @media (max-width: variables.$bp-small) {
-  .hero-image-wrapper::after {
-    max-width: 260px;
-    height: 260px;
-  }
-
-  .hero-image-frame {
-    width: 260px;
-    height: 260px;
+  .hero-image-wrapper {
+    --frame-size: 260px;
   }
 }
