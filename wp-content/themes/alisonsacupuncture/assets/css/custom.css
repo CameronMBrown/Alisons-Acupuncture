@@ -92,7 +92,7 @@ body {
 .cntr {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 5%;
+  padding: 1rem 3rem;
 }
 .cntr.left {
   width: 100%;
@@ -103,6 +103,11 @@ body {
   float: right;
 }
 
+@media (max-width: 768px) {
+  .cntr {
+    padding: 1rem 2rem;
+  }
+}
 @media (max-width: 480px) {
   .cntr {
     padding: 0 1rem;
@@ -549,20 +554,23 @@ body:has(#wpadminbar) .site {
 }
 
 .hero-image-wrapper {
+  --frame-size: 380px;
   flex: 1;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 380px;
+  width: var(--frame-size);
+  max-width: var(--frame-size);
+  aspect-ratio: 1/1;
 }
 .hero-image-wrapper::after {
   content: "";
   position: absolute;
   top: 5%;
   left: 5%;
-  width: 380px;
-  height: 380px;
+  width: var(--frame-size);
+  aspect-ratio: 1/1;
   background-color: #ffd65a;
   border-radius: 50%;
   pointer-events: none;
@@ -571,27 +579,40 @@ body:has(#wpadminbar) .site {
 }
 
 .hero-image-frame {
-  position: relative;
-  width: 380px;
-  height: 380px;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(135deg, #5b7e3c 0%, #1f3810 100%);
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
   border: 3px solid #f8a946;
   box-shadow: 0 12px 40px rgba(45, 80, 22, 0.2), inset 0 0 30px rgba(255, 255, 255, 0.1);
+  z-index: 1;
 }
 
 .hero-avatar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
   width: 100%;
-  height: 100%;
+  height: 110%;
   object-fit: cover;
   display: block;
-  border-radius: 50%;
+  border-radius: 0;
+  border-bottom-left-radius: 50% 45.4545454545%;
+  border-bottom-right-radius: 50% 45.4545454545%;
+  z-index: 2;
 }
 
+@media (max-width: 992px) {
+  .hero-text {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .hero-image-wrapper {
+    flex: 0 0 var(--frame-size);
+  }
+}
 @media (max-width: 768px) {
   .hero-section {
     min-height: auto;
@@ -601,23 +622,14 @@ body:has(#wpadminbar) .site {
     flex-direction: column;
     gap: 2rem;
   }
-  .hero-image-wrapper::after {
-    max-width: 300px;
-    height: 300px;
-  }
-  .hero-image-frame {
-    width: 300px;
-    height: 300px;
+  .hero-image-wrapper {
+    --frame-size: 300px;
+    margin-top: 3rem;
   }
 }
 @media (max-width: 480px) {
-  .hero-image-wrapper::after {
-    max-width: 260px;
-    height: 260px;
-  }
-  .hero-image-frame {
-    width: 260px;
-    height: 260px;
+  .hero-image-wrapper {
+    --frame-size: 260px;
   }
 }
 .hours-table {
