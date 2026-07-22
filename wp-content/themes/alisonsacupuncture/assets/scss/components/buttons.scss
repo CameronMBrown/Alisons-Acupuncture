@@ -84,3 +84,42 @@ form .btn-accent[type="submit"] {
     color: variables.$secondary-color;
   }
 }
+
+// Yellow-colored button — matches .booking-widget-buttons a::after (contact section)
+.btn-yellow {
+  background-color: variables.$accent-color;
+  // Dark text on the amber fill for AA contrast (see color.md accent-fill rule).
+  color: variables.$secondary-color;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.6rem;
+
+  &:hover {
+    color: variables.$secondary-color;
+    background-color: variables.$accent-color;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) brightness(0.9);
+  }
+
+  &:active {
+    color: variables.$secondary-color;
+    background-color: variables.$accent-color;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) brightness(0.75);
+  }
+
+  &:focus {
+    color: variables.$secondary-color;
+    background-color: variables.$accent-color;
+    filter: brightness(0.85);
+    outline: none;
+  }
+
+  &:focus-visible {
+    color: variables.$secondary-color;
+    outline: 3px solid variables.$secondary-color;
+    outline-offset: 2px;
+  }
+
+  &:visited {
+    color: variables.$secondary-color;
+  }
+}
