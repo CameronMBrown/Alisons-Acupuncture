@@ -1,0 +1,200 @@
+@use "../../variables";
+
+// ---- Trigger buttons ----------------------------------------
+
+.btn.directions-btn--desktop {
+  position: relative;
+  z-index: 3;
+}
+
+.btn.directions-btn--mobile {
+  display: none;
+}
+
+@media (min-width: variables.$bp-xlarge) {
+  .btn.directions-btn--desktop {
+    font-size: var(--fs-body);
+  }
+}
+
+@media (min-width: variables.$bp-ultrawide) {
+  .btn.directions-btn--desktop {
+    font-size: var(--fs-lg);
+  }
+}
+
+@media (max-width: variables.$bp-medium) {
+  .btn.directions-btn--mobile {
+    display: block;
+    width: fit-content;
+    margin: 1rem auto 0;
+  }
+}
+
+// ---- Fullscreen slideshow modal -------------------------------
+
+.office-directions-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.office-directions-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.office-directions-dialog {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 6rem;
+}
+
+.office-directions-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 3;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  color: variables.$text-light;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  &:focus-visible {
+    outline: 3px solid variables.$alternate-color;
+    outline-offset: 2px;
+  }
+}
+
+.office-directions-track {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.office-directions-slide {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100%;
+  margin: 0;
+
+  &.is-active {
+    display: flex;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  figcaption {
+    margin-top: 1.5rem;
+    max-width: 60ch;
+    text-align: center;
+    color: variables.$text-light;
+    font-size: var(--fs-body);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .office-directions-slide.is-active {
+    animation: office-directions-fade-in 0.3s ease;
+  }
+}
+
+@keyframes office-directions-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.office-directions-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  border-radius: 50%;
+  color: variables.$text-light;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  &:focus-visible {
+    outline: 3px solid variables.$alternate-color;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &--prev {
+    left: 1rem;
+  }
+
+  &--next {
+    right: 1rem;
+  }
+}
+
+@media (max-width: variables.$bp-medium) {
+  .office-directions-dialog {
+    padding: 5rem 1rem;
+  }
+
+  .office-directions-slide figcaption {
+    font-size: var(--fs-small);
+  }
+}
