@@ -4,3 +4,18 @@ node_modules/
 # local claude helpers
 .claude/
 .playwright-mcp/
+
+# WordPress core (not managed in this repo)
+wp-admin/
+wp-includes/
+wp-*.php
+xmlrpc.php
+license.txt
+readme.html
+
+# environment-specific config and secrets
+wp-config.php
+local-xdebuginfo.php
+
+# media library (managed via WP admin on each environment)
+wp-content/uploads/
