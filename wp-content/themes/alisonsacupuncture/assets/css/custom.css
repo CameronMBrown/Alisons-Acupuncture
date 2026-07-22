@@ -543,6 +543,10 @@ body:has(#wpadminbar) .site {
   z-index: 100;
 }
 
+.btn.primary-cta {
+  font-size: var(--fs-body);
+}
+
 .hero-layout {
   display: flex;
   align-items: center;
@@ -672,6 +676,182 @@ body:has(#wpadminbar) .site {
   border-bottom: 0;
 }
 
+.btn.directions-btn--desktop {
+  position: relative;
+  z-index: 3;
+}
+
+.btn.directions-btn--mobile {
+  display: none;
+}
+
+@media (min-width: 1400px) {
+  .btn.directions-btn--desktop {
+    font-size: var(--fs-body);
+  }
+}
+@media (min-width: 2000px) {
+  .btn.directions-btn--desktop {
+    font-size: var(--fs-lg);
+  }
+}
+@media (max-width: 768px) {
+  .btn.directions-btn--mobile {
+    display: block;
+    width: fit-content;
+    margin: 1rem auto 0;
+  }
+}
+.office-directions-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.office-directions-modal[hidden] {
+  display: none;
+}
+
+.office-directions-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.office-directions-dialog {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 6rem;
+}
+
+.office-directions-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 3;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  color: #f9f7f4;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.office-directions-close:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+.office-directions-close:focus-visible {
+  outline: 3px solid #ffd65a;
+  outline-offset: 2px;
+}
+
+.office-directions-track {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.office-directions-slide {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100%;
+  margin: 0;
+}
+.office-directions-slide.is-active {
+  display: flex;
+}
+.office-directions-slide img {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.office-directions-slide figcaption {
+  margin-top: 1.5rem;
+  max-width: 60ch;
+  text-align: center;
+  color: #f9f7f4;
+  font-size: var(--fs-body);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .office-directions-slide.is-active {
+    animation: office-directions-fade-in 0.3s ease;
+  }
+}
+@keyframes office-directions-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.office-directions-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  border-radius: 50%;
+  color: #f9f7f4;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.office-directions-nav:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.6);
+}
+.office-directions-nav:focus-visible {
+  outline: 3px solid #ffd65a;
+  outline-offset: 2px;
+}
+.office-directions-nav:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+.office-directions-nav--prev {
+  left: 1rem;
+}
+.office-directions-nav--next {
+  right: 1rem;
+}
+
+@media (max-width: 768px) {
+  .office-directions-dialog {
+    padding: 5rem 1rem;
+  }
+  .office-directions-slide figcaption {
+    font-size: var(--fs-small);
+  }
+}
 .hours-section {
   background: linear-gradient(135deg, #4a6a30 0%, #5b7e3c 40%, #6d9145 100%);
   position: relative;
@@ -728,8 +908,13 @@ body:has(#wpadminbar) .site {
   min-width: 300px;
   max-width: 1000px;
   flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .hours-image img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   min-height: 560px;
@@ -781,6 +966,10 @@ body:has(#wpadminbar) .site {
   }
   .hours-layout {
     grid-template-columns: 1fr;
+  }
+  .hours-content {
+    display: flex;
+    flex-direction: column;
   }
   .hours-content h2 {
     margin-bottom: 1.5rem;
@@ -1743,6 +1932,38 @@ form .btn-accent[type=submit]:focus-visible {
 }
 .btn-accent:visited,
 form .btn-accent[type=submit]:visited {
+  color: #3d3224;
+}
+
+.btn-yellow {
+  background-color: #f8a946;
+  color: #3d3224;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.6rem;
+}
+.btn-yellow:hover {
+  color: #3d3224;
+  background-color: #f8a946;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) brightness(0.9);
+}
+.btn-yellow:active {
+  color: #3d3224;
+  background-color: #f8a946;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) brightness(0.75);
+}
+.btn-yellow:focus {
+  color: #3d3224;
+  background-color: #f8a946;
+  filter: brightness(0.85);
+  outline: none;
+}
+.btn-yellow:focus-visible {
+  color: #3d3224;
+  outline: 3px solid #3d3224;
+  outline-offset: 2px;
+}
+.btn-yellow:visited {
   color: #3d3224;
 }
 

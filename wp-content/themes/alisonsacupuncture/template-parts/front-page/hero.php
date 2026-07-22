@@ -43,7 +43,7 @@ $trees = wp_get_attachment_image_src(142, 'full', false,);
           <span class="hero-title--accent slide-in-bottom delay-regular"><?php echo esc_html($certification); ?></span>
         </h1>
         <p class="hero-subtitle slide-in-bottom delay-long"><?php echo esc_html($tagline); ?></p>
-        <button class="btn slide-in-bottom delay-long">
+        <button class="btn primary-cta slide-in-bottom delay-long">
           <a href="#contact">
             Book an Appointment
           </a>
