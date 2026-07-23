@@ -12,54 +12,37 @@ add_action('wp_enqueue_scripts', function () {
   wp_enqueue_style('oceanwp-parent-style', get_template_directory_uri() . '/style.css');
   wp_enqueue_style('alisonsacupuncture-custom', get_stylesheet_directory_uri() . '/assets/css/custom.css', array('oceanwp-parent-style'), '1.0.0');
 
+  // Single bundle of animations, hero/about parallax, contact-appointment
+  // toggle, mobile nav, and office-directions modal. Built from those 6
+  // source files via `npm run build:js` (scripts/build-js.mjs) — edit the
+  // sources, not this bundle.
   wp_enqueue_script(
-    'alisonsacupuncture-animations',
-    get_stylesheet_directory_uri() . '/assets/js/animations.js',
-    array(),
-    '1.0.0',
-    true
-  );
-
-  wp_enqueue_script(
-    'alisonsacupuncture-hero-parallax',
-    get_stylesheet_directory_uri() . '/assets/js/hero-parallax.js',
-    array('alisonsacupuncture-animations'),
-    '1.0.0',
-    true
-  );
-
-  wp_enqueue_script(
-    'alisonsacupuncture-about-parallax',
-    get_stylesheet_directory_uri() . '/assets/js/about-parallax.js',
-    array(),
-    '1.0.0',
-    true
-  );
-
-  wp_enqueue_script(
-    'alisonsacupuncture-contact-appointment',
-    get_stylesheet_directory_uri() . '/assets/js/contact-appointment.js',
-    array(),
-    '1.0.0',
-    true
-  );
-
-  wp_enqueue_script(
-    'alisonsacupuncture-mobile-nav',
-    get_stylesheet_directory_uri() . '/assets/js/mobile-nav.js',
-    array(),
-    '1.0.0',
-    true
-  );
-
-  wp_enqueue_script(
-    'alisonsacupuncture-office-directions',
-    get_stylesheet_directory_uri() . '/assets/js/office-directions.js',
+    'alisonsacupuncture-bundle',
+    get_stylesheet_directory_uri() . '/assets/js/bundle.min.js',
     array(),
     '1.0.0',
     true
   );
 });
+
+// This child theme fully overrides header.php/footer.php with its own nav,
+// animations, and modals, and never calls OceanWP's oceanwp_header()/
+// oceanwp_footer() template hooks, so OceanWP's own jQuery-powered features
+// (mobile side panel, sticky header, scroll-to-top, etc.) have no markup to
+// attach to. Drop OceanWP's main script (and jQuery, its only dependency)
+// on the front end. VERIFY IN BROWSER before trusting this: click the mobile
+// menu, watch scroll-in animations, and check the console for JS errors on
+// every template (front page, thank-you, privacy-policy). Remove this dequeue
+// if anything relies on OceanWP's JS.
+add_action('wp_enqueue_scripts', function () {
+  if (is_admin()) {
+    return;
+  }
+  wp_dequeue_script('oceanwp-main');
+  wp_deregister_script('oceanwp-main');
+  wp_dequeue_script('jquery');
+  wp_deregister_script('jquery');
+}, 100);
 
 // ACF JSON save and load paths
 add_filter('acf/settings/save_json', 'alisons_acf_json_save_point');
@@ -84,6 +67,11 @@ add_action('after_setup_theme', function () {
   register_nav_menus(array(
     'menu-1' => esc_html__('Primary', 'alisonsacupuncture'),
   ));
+
+  // Hard-cropped square size for service card cover images, so the served
+  // crop matches the 1:1 card exactly instead of relying on CSS object-fit
+  // to mask a mismatched aspect ratio.
+  add_image_size('service-card', 800, 800, true);
 });
 
 // Register thank-you + privacy-policy query vars

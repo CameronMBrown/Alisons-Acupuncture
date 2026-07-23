@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
+    "esbuild": "^0.24.2",
     "sass": "^1.78.0"
   },
   "scripts": {
-    "build:css": "sass wp-content/themes/alisonsacupuncture/assets/scss/custom.scss wp-content/themes/alisonsacupuncture/assets/css/custom.css --no-source-map",
-    "watch:css": "sass --watch wp-content/themes/alisonsacupuncture/assets/scss/custom.scss:wp-content/themes/alisonsacupuncture/assets/css/custom.css --no-source-map"
+    "build:css": "sass wp-content/themes/alisonsacupuncture/assets/scss/custom.scss wp-content/themes/alisonsacupuncture/assets/css/custom.css --style=compressed --no-source-map",
+    "watch:css": "sass --watch wp-content/themes/alisonsacupuncture/assets/scss/custom.scss:wp-content/themes/alisonsacupuncture/assets/css/custom.css --no-source-map",
+    "build:js": "node scripts/build-js.mjs",
+    "build": "npm run build:css && npm run build:js"
   }
 }

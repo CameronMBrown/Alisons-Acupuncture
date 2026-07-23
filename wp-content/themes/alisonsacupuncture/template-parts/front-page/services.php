@@ -30,7 +30,7 @@ $logo = wp_get_attachment_image(141, 'full', false, ['class' => 'service-card-lo
         $title = $group[$fields['title']] ?? '';
         $description = $group[$fields['desc']] ?? '';
         $image_id = $group[$fields['img']] ?? '';
-        $image_html = $image_id ? wp_get_attachment_image($image_id, 'large', false, [
+        $image_html = $image_id ? wp_get_attachment_image($image_id, 'service-card', false, [
           'class'   => 'service-card-image',
           'loading' => 'lazy',
         ]) : '';
