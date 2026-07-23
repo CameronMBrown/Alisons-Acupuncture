@@ -90,11 +90,19 @@ add_action('init', function () {
 // Handle thank-you page
 add_action('template_redirect', function () {
   if (get_query_var('thank_you')) {
+    global $wp_query;
+    $wp_query->is_404 = false;
+    status_header(200);
+
     // Prevent search engines from indexing this page
     add_filter('wp_robots', function ($robots) {
       $robots['noindex'] = true;
       $robots['nofollow'] = true;
       return $robots;
+    });
+
+    add_filter('pre_get_document_title', function () {
+      return 'Thanks for reaching out - ' . get_bloginfo('name');
     });
 
     include get_stylesheet_directory() . '/template-parts/thank-you.php';
@@ -105,6 +113,14 @@ add_action('template_redirect', function () {
 // Handle privacy policy page
 add_action('template_redirect', function () {
   if (get_query_var('privacy_policy')) {
+    global $wp_query;
+    $wp_query->is_404 = false;
+    status_header(200);
+
+    add_filter('pre_get_document_title', function () {
+      return 'Privacy Policy - ' . get_bloginfo('name');
+    });
+
     include get_stylesheet_directory() . '/template-parts/privacy-policy.php';
     exit;
   }
