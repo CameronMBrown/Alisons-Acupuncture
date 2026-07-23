@@ -27,7 +27,7 @@ $booking_description = get_field('booking_description') ?: 'Pick a time that wor
 
 // Fallback if ACF email is empty
 if (empty($email)) {
-  $email = 'asacupuncture1979@gmail.com';
+  $email = 'info@alisonsacupuncture.com';
 }
 
 $phone_href = '';
@@ -95,7 +95,7 @@ if (isset($_POST['contact_submit'])) {
 
   $to = $email;
 
-  $subject = "Website contact us form submission from: {$post_name} - {$post_email}";
+  $subject = "Website contact us form: {$post_name} - {$post_email}";
 
   $body  = "New Website Contact Us Email\n";
   $body .= "========================\n\n";

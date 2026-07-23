@@ -7,6 +7,16 @@
 // SEO: LocalBusiness/MedicalBusiness schema, meta description, Open Graph (see inc/seo.php)
 require_once get_stylesheet_directory() . '/inc/seo.php';
 
+// Send outgoing mail from the real registered mailbox instead of WP's default
+// wordpress@domain fake address — mismatched From vs. an authenticated
+// mailbox is a strong spam signal on a domain with no sending history yet.
+add_filter('wp_mail_from', function () {
+  return 'info@alisonsacupuncture.com';
+});
+add_filter('wp_mail_from_name', function () {
+  return "Alison's Acupuncture";
+});
+
 // Enqueue parent theme stylesheet
 add_action('wp_enqueue_scripts', function () {
   wp_enqueue_style('oceanwp-parent-style', get_template_directory_uri() . '/style.css');
@@ -90,11 +100,19 @@ add_action('init', function () {
 // Handle thank-you page
 add_action('template_redirect', function () {
   if (get_query_var('thank_you')) {
+    global $wp_query;
+    $wp_query->is_404 = false;
+    status_header(200);
+
     // Prevent search engines from indexing this page
     add_filter('wp_robots', function ($robots) {
       $robots['noindex'] = true;
       $robots['nofollow'] = true;
       return $robots;
+    });
+
+    add_filter('pre_get_document_title', function () {
+      return 'Thanks for reaching out - ' . get_bloginfo('name');
     });
 
     include get_stylesheet_directory() . '/template-parts/thank-you.php';
@@ -105,6 +123,14 @@ add_action('template_redirect', function () {
 // Handle privacy policy page
 add_action('template_redirect', function () {
   if (get_query_var('privacy_policy')) {
+    global $wp_query;
+    $wp_query->is_404 = false;
+    status_header(200);
+
+    add_filter('pre_get_document_title', function () {
+      return 'Privacy Policy - ' . get_bloginfo('name');
+    });
+
     include get_stylesheet_directory() . '/template-parts/privacy-policy.php';
     exit;
   }
