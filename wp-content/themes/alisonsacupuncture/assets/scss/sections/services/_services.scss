@@ -102,6 +102,15 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  overflow: hidden;
+
+  // iOS Safari bug: descendants with their own position/z-index can leak
+  // through past their backface-hidden ancestor on the rotated face. Every
+  // layered child needs the property repeated directly on it.
+  * {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
 }
 
 .service-card-front {
@@ -126,6 +135,8 @@
     background: rgba(0, 0, 0, 0.6);
     border-radius: 12px;
     z-index: 1;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   h3 {
