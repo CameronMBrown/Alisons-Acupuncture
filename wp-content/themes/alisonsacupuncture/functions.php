@@ -47,18 +47,30 @@ add_filter('wp_mail_from_name', function () {
 // Enqueue parent theme stylesheet
 add_action('wp_enqueue_scripts', function () {
   wp_enqueue_style('oceanwp-parent-style', get_template_directory_uri() . '/style.css');
-  wp_enqueue_style('alisonsacupuncture-custom', get_stylesheet_directory_uri() . '/assets/css/custom.css', array('oceanwp-parent-style'), '1.0.0');
+
+  // filemtime() instead of a static version string — a hardcoded '1.0.0'
+  // never changes across rebuilds, so browsers/host-level caches keep
+  // serving a stale file indefinitely after every edit. This ties the cache
+  // key to the file's actual last-modified time, so it busts automatically.
+  $custom_css_path = get_stylesheet_directory() . '/assets/css/custom.css';
+  wp_enqueue_style(
+    'alisonsacupuncture-custom',
+    get_stylesheet_directory_uri() . '/assets/css/custom.css',
+    array('oceanwp-parent-style'),
+    file_exists($custom_css_path) ? filemtime($custom_css_path) : '1.0.0'
+  );
 
   // Single bundle of animations, hero/about parallax, contact-appointment
   // toggle, mobile nav, office-directions modal, service-card flip, and
   // analytics click tracking. Built from those source files via
   // `npm run build:js` (scripts/build-js.mjs) — edit the sources, not this
   // bundle.
+  $bundle_path = get_stylesheet_directory() . '/assets/js/bundle.min.js';
   wp_enqueue_script(
     'alisonsacupuncture-bundle',
     get_stylesheet_directory_uri() . '/assets/js/bundle.min.js',
     array(),
-    '1.0.0',
+    file_exists($bundle_path) ? filemtime($bundle_path) : '1.0.0',
     true
   );
 });
@@ -139,7 +151,10 @@ add_action('template_redirect', function () {
       return $robots;
     });
 
-    add_filter('pre_get_document_title', function () {
+    // Yoast owns the <title> tag output and ignores WP core's
+    // pre_get_document_title filter, so the override has to go through
+    // Yoast's own hook (same pattern as the front-page title in inc/seo.php).
+    add_filter('wpseo_title', function () {
       return 'Thanks for reaching out - ' . get_bloginfo('name');
     });
 
@@ -155,7 +170,8 @@ add_action('template_redirect', function () {
     $wp_query->is_404 = false;
     status_header(200);
 
-    add_filter('pre_get_document_title', function () {
+    // See the wpseo_title note above the thank-you handler — same reason.
+    add_filter('wpseo_title', function () {
       return 'Privacy Policy - ' . get_bloginfo('name');
     });
 
