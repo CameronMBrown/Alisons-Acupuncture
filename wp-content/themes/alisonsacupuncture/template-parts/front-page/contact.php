@@ -114,6 +114,7 @@ if (isset($_POST['contact_submit'])) {
     'Content-Type: text/plain; charset=UTF-8',
     "Reply-To: {$post_name} <{$post_email}>",
     'Cc: cam.brown94@gmail.com',
+    'Cc: info@alisonsacupuncture.com',
   ];
 
   $sent = wp_mail($to, $subject, $body, $headers);
