@@ -7,6 +7,16 @@
 // SEO: LocalBusiness/MedicalBusiness schema, meta description, Open Graph (see inc/seo.php)
 require_once get_stylesheet_directory() . '/inc/seo.php';
 
+// Send outgoing mail from the real registered mailbox instead of WP's default
+// wordpress@domain fake address — mismatched From vs. an authenticated
+// mailbox is a strong spam signal on a domain with no sending history yet.
+add_filter('wp_mail_from', function () {
+  return 'info@alisonsacupuncture.com';
+});
+add_filter('wp_mail_from_name', function () {
+  return "Alison's Acupuncture";
+});
+
 // Enqueue parent theme stylesheet
 add_action('wp_enqueue_scripts', function () {
   wp_enqueue_style('oceanwp-parent-style', get_template_directory_uri() . '/style.css');
