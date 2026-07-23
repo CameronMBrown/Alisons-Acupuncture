@@ -66,9 +66,15 @@ if (empty($email)) {
         <h2>What I collect</h2>
         <p>
           When you use the contact form, I collect your name, email address, phone number (if you
-          provide one), and whatever you write in the message field. I don't use analytics,
-          advertising, or tracking cookies on this site, so I'm not collecting browsing behaviour
-          or building a profile of visitors.
+          provide one), and whatever you write in the message field.
+        </p>
+        <p>
+          This site also uses Google Analytics to see basic traffic patterns, like how many people
+          visit and which pages they look at. IP addresses are anonymized, and I've turned off
+          Google Signals and ad personalization, so this data isn't used for advertising, isn't
+          combined with other Google account data, and isn't sold or shared with advertisers. See
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's privacy policy</a>
+          for how they handle this data.
         </p>
         <p>
           If you book an appointment through the "Book an Appointment" widget on this site, that
