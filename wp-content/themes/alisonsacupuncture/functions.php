@@ -7,6 +7,33 @@
 // SEO: LocalBusiness/MedicalBusiness schema, meta description, Open Graph (see inc/seo.php)
 require_once get_stylesheet_directory() . '/inc/seo.php';
 
+// Google Analytics 4 Measurement ID
+define('ALISONS_GA_MEASUREMENT_ID', 'G-H2B899KEJN');
+
+// GA4: analytics only, no ad personalization/Google Signals, and skipped for
+// logged-in users so admin/editor visits don't pollute the data.
+add_action('wp_head', function () {
+  if (is_user_logged_in()) {
+    return;
+  }
+?>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo esc_attr(ALISONS_GA_MEASUREMENT_ID); ?>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', '<?php echo esc_js(ALISONS_GA_MEASUREMENT_ID); ?>', {
+      anonymize_ip: true,
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
+    });
+  </script>
+<?php
+});
+
 // Send outgoing mail from the real registered mailbox instead of WP's default
 // wordpress@domain fake address — mismatched From vs. an authenticated
 // mailbox is a strong spam signal on a domain with no sending history yet.
@@ -23,9 +50,10 @@ add_action('wp_enqueue_scripts', function () {
   wp_enqueue_style('alisonsacupuncture-custom', get_stylesheet_directory_uri() . '/assets/css/custom.css', array('oceanwp-parent-style'), '1.0.0');
 
   // Single bundle of animations, hero/about parallax, contact-appointment
-  // toggle, mobile nav, and office-directions modal. Built from those 6
-  // source files via `npm run build:js` (scripts/build-js.mjs) — edit the
-  // sources, not this bundle.
+  // toggle, mobile nav, office-directions modal, service-card flip, and
+  // analytics click tracking. Built from those source files via
+  // `npm run build:js` (scripts/build-js.mjs) — edit the sources, not this
+  // bundle.
   wp_enqueue_script(
     'alisonsacupuncture-bundle',
     get_stylesheet_directory_uri() . '/assets/js/bundle.min.js',
