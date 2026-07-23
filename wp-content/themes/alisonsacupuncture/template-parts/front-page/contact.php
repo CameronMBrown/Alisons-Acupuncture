@@ -224,10 +224,17 @@ $active_panel = $has_error ? 'contact' : 'booking';
             <?php endif; ?>
             <div class="booking-widget-buttons" id="book_now_buttons">
               <?php // ClinicSense booking widget. Loaded via a plain <script src> with a
-              // hardcoded vendor URL — no document.write / unescape / eval, so there is no
-              // injectable surface and no inline JS that can leak as visible text. The
-              // widget injects its "Book Now" button here and opens its booking modal
-              // over the page. ?>
+              // hardcoded vendor URL — no unescape/eval, so there is no injectable
+              // surface. The widget injects its "Book Now" button here and opens its
+              // booking modal over the page.
+              //
+              // Tried lazy-loading this on scroll-into-view to keep its third-party
+              // Stripe cookie off the initial pageload (see git history) — reverted.
+              // The widget's bootstrap calls `document.write`, which browsers refuse
+              // to run in a script inserted after the page has already loaded
+              // ("Failed to execute 'write' on 'Document'"), so deferred injection
+              // silently breaks the Book Now button. Loading it eagerly here is a
+              // vendor constraint, not something fixable from this theme. ?>
               <script src="https://alisonsacupunctureanddryneedling.clinicsense.com/book_widget/?size=small&amp;color=orange" type="text/javascript"></script>
             </div>
           </div>

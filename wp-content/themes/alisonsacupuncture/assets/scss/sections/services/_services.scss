@@ -25,7 +25,6 @@
   max-width: 400px;
   perspective: 1000px;
   cursor: pointer;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
 
   &:hover .service-card-inner,
   &:focus-within .service-card-inner {
@@ -146,6 +145,7 @@
 
 .service-card-back {
   background-color: variables.$primary-color;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transform: rotateY(180deg);
 
   .service-card-logo {

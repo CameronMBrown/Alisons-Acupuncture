@@ -69,6 +69,7 @@ function alisons_business_info()
       'Electroacupuncture',
       'Dry Needling',
       'Cupping',
+      'Fire Cupping',
       'Soft Tissue Therapy',
       'Lower Body Tissue Work',
       'Gua Sha',
