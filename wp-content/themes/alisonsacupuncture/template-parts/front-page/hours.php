@@ -27,6 +27,8 @@ for ($i = 1; is_array($office_location) && $i <= 4; $i++) {
 
   $directions_steps[] = [
     'src' => $step_image[0],
+    'width' => $step_image[1],
+    'height' => $step_image[2],
     'alt' => get_post_meta($step_img_id, '_wp_attachment_image_alt', true) ?: $step_caption,
     'caption' => $step_caption,
   ];
@@ -39,6 +41,8 @@ for ($i = 1; is_array($office_location) && $i <= 4; $i++) {
     <div class="hours-image">
       <img
         src="<?php echo esc_url($hours_image[0]); ?>"
+        width="<?php echo esc_attr($hours_image[1]); ?>"
+        height="<?php echo esc_attr($hours_image[2]); ?>"
         alt="<?php echo esc_attr($hours_alt_txt); ?>"
         loading="lazy">
 
@@ -103,6 +107,8 @@ for ($i = 1; is_array($office_location) && $i <= 4; $i++) {
           <figure class="office-directions-slide" data-index="<?php echo esc_attr($index); ?>">
             <img
               src="<?php echo esc_url($step['src']); ?>"
+              width="<?php echo esc_attr($step['width']); ?>"
+              height="<?php echo esc_attr($step['height']); ?>"
               alt="<?php echo esc_attr($step['alt']); ?>"
               loading="lazy">
             <figcaption><?php echo esc_html($step['caption']); ?></figcaption>
