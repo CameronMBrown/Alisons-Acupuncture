@@ -18,6 +18,7 @@ const files = [
   "contact-appointment.js",
   "mobile-nav.js",
   "office-directions.js",
+  "service-card-flip.js",
 ];
 
 const combined = files
