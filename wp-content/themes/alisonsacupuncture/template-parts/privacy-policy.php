@@ -13,7 +13,7 @@ $email       = $homepage_id ? get_field('email', $homepage_id) : '';
 $phone       = $homepage_id ? get_field('phone_number', $homepage_id) : '';
 
 if (empty($email)) {
-  $email = 'asacupuncture1979@gmail.com';
+  $email = 'info@alisonsacupuncture.com';
 }
 ?>
 
