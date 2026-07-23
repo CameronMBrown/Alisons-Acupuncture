@@ -95,7 +95,7 @@ if (isset($_POST['contact_submit'])) {
 
   $to = $email;
 
-  $subject = "Website contact us form submission from: {$post_name} - {$post_email}";
+  $subject = "Website contact us form: {$post_name} - {$post_email}";
 
   $body  = "New Website Contact Us Email\n";
   $body .= "========================\n\n";
