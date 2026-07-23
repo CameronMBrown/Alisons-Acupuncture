@@ -39,7 +39,9 @@
     animation: none !important;
   }
 
-  // Disable the service-card 3-D flip; hover/tap no longer spins the card.
+  // Disable the service-card flip animation; service-card-flip.js checks
+  // prefers-reduced-motion itself and swaps faces instantly with no squash,
+  // so this is belt-and-braces in case that check is ever bypassed.
   .service-card-inner {
     transition: none !important;
   }
