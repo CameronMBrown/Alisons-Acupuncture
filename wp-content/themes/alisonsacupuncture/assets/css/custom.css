@@ -1133,7 +1133,6 @@ body:has(#wpadminbar) .site {
   max-width: 400px;
   perspective: 1000px;
   cursor: pointer;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
 }
 .service-card:hover .service-card-inner, .service-card:focus-within .service-card-inner {
   transform: rotateY(180deg);
@@ -1246,6 +1245,7 @@ body:has(#wpadminbar) .site {
 
 .service-card-back {
   background-color: #5b7e3c;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transform: rotateY(180deg);
 }
 .service-card-back .service-card-logo {
