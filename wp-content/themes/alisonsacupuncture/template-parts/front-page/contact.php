@@ -27,7 +27,7 @@ $booking_description = get_field('booking_description') ?: 'Pick a time that wor
 
 // Fallback if ACF email is empty
 if (empty($email)) {
-  $email = 'info@alisonsacupuncture.com';
+  $email = 'asacupuncture1979@gmail.com';
 }
 
 $phone_href = '';
@@ -95,9 +95,9 @@ if (isset($_POST['contact_submit'])) {
 
   $to = $email;
 
-  $subject = "{$post_name} is requesting an appointment";
+  $subject = "Website contact us form submission from: {$post_name} - {$post_email}";
 
-  $body  = "New Appointment Request\n";
+  $body  = "New Website Contact Us Email\n";
   $body .= "========================\n\n";
   $body .= 'Date:     ' . wp_date('F j, Y g:i A') . "\n";
   $body .= "Name:     {$post_name}\n";
@@ -113,6 +113,7 @@ if (isset($_POST['contact_submit'])) {
   $headers = [
     'Content-Type: text/plain; charset=UTF-8',
     "Reply-To: {$post_name} <{$post_email}>",
+    'Cc: cam.brown94@gmail.com',
   ];
 
   $sent = wp_mail($to, $subject, $body, $headers);
@@ -234,7 +235,8 @@ $active_panel = $has_error ? 'contact' : 'booking';
               // to run in a script inserted after the page has already loaded
               // ("Failed to execute 'write' on 'Document'"), so deferred injection
               // silently breaks the Book Now button. Loading it eagerly here is a
-              // vendor constraint, not something fixable from this theme. ?>
+              // vendor constraint, not something fixable from this theme. 
+              ?>
               <script src="https://alisonsacupunctureanddryneedling.clinicsense.com/book_widget/?size=small&amp;color=orange" type="text/javascript"></script>
             </div>
           </div>
